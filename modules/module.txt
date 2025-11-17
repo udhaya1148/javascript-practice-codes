@@ -1,0 +1,176 @@
+Modules 
+
+ES Modules (import/export) 
+
+CommonJS (require, module.exports) 
+
+What is a Module? 
+
+A module is just a JavaScript file that contains reusable code. 
+ You can export things (like functions, variables) from one file and import them into another file. 
+
+✅ Helps organize your code 
+ ✅ Makes it easier to maintain 
+ ✅ Avoids name conflicts 
+
+ 
+
+Two Main Types of JavaScript Modules 
+
+Type 
+
+Used In 
+
+Syntax 
+
+ES Modules (ESM) 
+
+Modern JS (Browser + Node.js) 
+
+import / export 
+
+CommonJS (CJS) 
+
+Older Node.js style 
+
+require() / module.exports 
+
+ 
+
+ES Modules (import / export) 
+
+🟩 Used in: Modern browsers and Node.js (from version 13+) 
+ 🟩 File extension: .js (or .mjs sometimes) 
+
+Example: Exporting 
+
+ math.js 
+
+//ES modules 
+
+ 
+
+function add(a,b){ 
+
+return a+b; 
+
+} 
+
+ 
+
+function sub(a,b){ 
+
+return a-b; 
+
+} 
+
+ 
+
+export {add, sub}; // named export ---> many per file 
+
+ 
+
+function mul(a,b){ 
+
+return a*b; 
+
+} 
+
+export default mul; // default export ---> only one per file 
+
+ 
+
+Example: Importing 
+
+import {add, sub} from './math.js'; 
+
+import mul from './math.js' 
+
+ 
+
+console.log(add(2,3)); 
+
+console.log(sub(4,2)); 
+
+console.log(mul(2,3)); 
+
+ 
+
+Output: 
+
+5 
+
+2 
+
+6 
+
+Key Points 
+
+export makes variables/functions available to other files. 
+
+import brings them into your current file. 
+
+Default export = only one per file 
+
+Named exports = many per file 
+
+ 
+
+2️⃣  CommonJS (require / module.exports) 
+
+🟦 Used in: Older Node.js (still common in backend code) 
+ 🟦 File extension: .js 
+
+Example: Exporting 
+
+📁 math.js 
+
+//commonjs 
+
+ 
+
+function add(a, b) { 
+
+return a + b; 
+
+} 
+
+ 
+
+function sub(a, b) { 
+
+return a - b; 
+
+} 
+
+ 
+
+// Export functions 
+
+module.exports = { add, sub}; 
+
+ 
+
+ 
+
+📁 app.js 
+
+// Import the module 
+
+const math = require('./math'); 
+
+ 
+
+console.log(math.add(5, 3)); 
+
+console.log(math.sub(10, 4)); 
+
+ 
+
+ 
+
+Output: 
+
+8 
+
+6 

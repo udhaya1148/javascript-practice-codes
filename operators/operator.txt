@@ -1,0 +1,247 @@
+JavaScript Operators 
+
+Arithmetic (+, -, *, /, %) 
+
+Comparison (==, ===, !=, !==, >, <) 
+
+Logical (&&, ||, !) 
+
+Assignment (=, +=, -=, etc.) 
+
+Ternary (condition ? value1 : value2) 
+
+ 
+
+Arithmetic operator: 
+
+Operator 
+
+Example 
+
+Result 
+
+Notes 
+
++ 
+
+5 + 3 
+
+8 
+
+Addition (also concatenates strings) 
+
+- 
+
+5 - 3 
+
+2 
+
+Subtraction 
+
+* 
+
+5 * 3 
+
+15 
+
+Multiplication 
+
+/ 
+
+10 / 2 
+
+5 
+
+Division 
+
+% 
+
+10 % 3 
+
+1 
+
+Remainder (modulus) 
+
+ 
+
+Comparison Operators 
+
+Used to compare two values. Returns true/false. 
+
+Operator 
+
+Example 
+
+Result 
+
+Notes 
+
+== 
+
+5 == "5" 
+
+true 
+
+Checks value only, type coercion happens 
+
+=== 
+
+5 === "5" 
+
+false 
+
+Checks value and type 
+
+!= 
+
+5 != "6" 
+
+true 
+
+Not equal (value only) 
+
+!== 
+
+5 !== "5" 
+
+true 
+
+Not equal (value or type) 
+
+> 
+
+5 > 3 
+
+true 
+
+Greater than 
+
+< 
+
+5 < 3 
+
+false 
+
+Less than 
+
+>= 
+
+5 >= 5 
+
+true 
+
+Greater or equal 
+
+<= 
+
+5 <= 4 
+
+false 
+
+Less or equal 
+
+Logical Operators 
+
+Used with booleans to combine or negate conditions. 
+
+ 
+
+Operator 
+
+Example 
+
+Result 
+
+Notes 
+
+&& 
+
+true && false 
+
+false 
+
+AND – both must be true 
+
+|| 
+
+True || false 
+
+true 
+
+One or both expression are true 
+
+! 
+
+!true 
+
+false 
+
+NOT – inverts boolean 
+
+The || operator returns true if one or both expressions are true, otherwise false: 
+
+ 
+
+Assignment Operators 
+
+Used to assign values to variables. Can also combine assignment with arithmetic. 
+
+Operator 
+
+Example 
+
+Meaning 
+
+= 
+
+x = 5 
+
+Assign 5 to x 
+
++= 
+
+x += 2 
+
+x = x + 2 
+
+-= 
+
+x -= 2 
+
+x = x - 2 
+
+*= 
+
+x *= 3 
+
+x = x * 3 
+
+/= 
+
+x /= 2 
+
+x = x / 2 
+
+%= 
+
+x %= 3 
+
+x = x % 3 
+
+5. Ternary Operator 
+
+Short-hand for if-else. 
+
+Syntax: 
+
+condition ? valueIfTrue : valueIfFalse 
+ 
+
+let age = 18; 
+let canVote = (age >= 18) ? "Yes" : "No"; 
+console.log(canVote); // "Yes" 
+ 
+
+ Use for simple conditional assignments. 
+
+ 

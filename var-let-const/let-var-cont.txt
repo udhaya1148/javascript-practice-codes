@@ -1,0 +1,155 @@
+ 
+
+Java script let, var, const: 
+
+ 
+
+Var ----> function scope 
+
+It can be redeclare or reasign with in function scope 
+
+Example: 
+
+function testVar() {    //function scope 
+
+  var x = 1; 
+
+  if (true) {   // block scope 
+
+    var x = 2; // here i can redeclare within scope x=1 changed as x=2 so it conside x =2 for all console for block scope and function scope also 
+
+  Also redeclare var x=3 if give this output is 3 3 
+
+    console.log(x); // 2       
+
+  }// till block scope 
+
+  console.log(x); // 2 
+
+}//still funcion scope  
+
+testVar(); 
+
+Output: 
+
+2 
+
+2 
+
+ 
+
+Let ---> it is body scope 
+
+It only consider body scope variable  
+
+It cannot be redeclare but it can be reassign value inside body scope 
+
+Example: 
+
+function testVar() {  
+
+  let x = 1; 
+
+  if (true) { 
+
+    let x = 2; // same x as above 
+
+   Let x=3 ; // it cannot be redeclare same variable in same block it show error already declared 
+
+    x=3; // but we can reassign value for same variable inside same block 
+
+    console.log(x); // 2 changed to 3 
+
+  } 
+
+  console.log(x); // 1 here print 1 becase it is out side block scope 
+
+} 
+
+testVar(); 
+
+Output: 
+
+3  
+
+1 
+
+ 
+
+Const  ----> it body scope 
+
+It cannot be redesign and reassign in same block scope 
+
+But it can update values using array and object methods 
+
+Example: 
+
+function testVar() {  
+
+  const x = 1; 
+
+  if (true) { 
+
+    const x = 2; // same x as above 
+
+//   const x=3;  // unable to redeclare 
+
+//   x=3;  // unable to redesign 
+
+    console.log(x); // 2 
+
+  } 
+
+  console.log(x); // 1 
+
+} 
+
+testVar(); 
+
+Output: 
+
+2 
+
+1 
+
+Example for update const values: 
+
+Array: 
+
+arr=[1,2,3,4] 
+
+arr.push(5) 
+
+console.log(arr) 
+Output: 
+
+[ 1, 2, 3, 4, 5 ] 
+
+ 
+
+Object: 
+
+const person={ 
+
+  name:'ram' 
+
+} 
+
+console.log(person) 
+
+person.city='cbe' 
+
+console.log(person) 
+
+Output: 
+
+{ name: 'ram' } 
+{ name: 'ram', city: 'cbe' } 
+
+ 
+
+ 
+
+ 
+
+ 

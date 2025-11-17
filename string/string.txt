@@ -1,0 +1,520 @@
+Strings 
+
+What is a String? 
+
+A string is text enclosed in quotes. 
+
+Quotes can be: 
+
+"double quotes" 
+
+'single quotes' 
+
+`backticks` (for special features) 
+
+let name = "kumar";   // double quotes 
+let greeting = 'Hello';      // single quotes 
+let message = `Hi ${name}`;  // backticks with variable 
+console.log(message);        // Hi kumar 
+ 
+
+✅ Backticks allow variables inside strings using ${}. 
+
+ 
+
+escape sequences are valid in JavaScript: 
+
+‘\’       --->> assign single quote in string 
+
+“\”     ---->> assign double quote in string 
+
+\\        ----->>  inserts a backslash in a string: 
+
+Code 
+
+Result 
+
+\b 
+
+Backspace 
+
+\f 
+
+Form Feed 
+
+\n 
+
+New Line 
+
+\r 
+
+Carriage Return 
+
+\t 
+
+Horizontal Tabulator 
+
+\v 
+
+Vertical Tabulator 
+
+ 
+
+String Methods 
+
+Strings are immutable in JavaScript, so every method returns a new string; the original string stays the same. 
+
+ String length 
+
+Gives the number of characters in a string. 
+
+let str = "Hello"; 
+console.log(str.length); // 5 
+ 
+
+ 
+
+charAt(index) 
+
+Returns the character at a given index (0-based). 
+
+console.log(str.charAt(1)); // "e" 
+ 
+
+ concat() 
+
+Joins two or more strings. 
+
+let str1 = "Hello"; 
+let str2 = "World"; 
+console.log(str1.concat(" ", str2)); // "Hello World" 
+ 
+
+ 
+
+at(index) 
+
+Returns the character at index; supports negative index to count from end. 
+
+let text = "Hello"; 
+console.log(text.at(1));  // "e" 
+console.log(text.at(-1)); // "o" 
+ 
+
+ 
+
+Bracket notation [ ] 
+
+Another way to get a character at index. 
+
+console.log(text[0]);  // "H" 
+ 
+
+ 
+
+slice(start, end) 
+
+Returns part of a string. 
+
+start included, end excluded. 
+
+Supports negative indices. 
+
+console.log(text.slice(1,4));  // "ell" 
+console.log(text.slice(-3));   // "llo" 
+ 
+
+ 
+
+substring(start, end) 
+
+Similar to slice(), but does not accept negative indices. 
+
+console.log(text.substring(1,4)); // "ell" 
+ 
+
+ 
+
+substr(start, length) 
+
+Extracts substring starting at index with given length. 
+
+(Considered legacy, but still works) 
+
+console.log(text.substr(1,3)); // "ell" 
+ 
+
+ 
+
+ toUpperCase() 
+
+Converts string to uppercase. 
+
+console.log(text.toUpperCase()); // "HELLO" 
+ 
+
+ 
+
+ toLowerCase() 
+
+Converts string to lowercase. 
+
+console.log(text.toLowerCase()); // "hello" 
+ 
+
+trim() 
+
+Removes spaces from both ends. 
+
+let str2 = "  hello  "; 
+console.log(str2.trim()); // "hello" 
+ 
+
+ 
+
+trimStart() 
+
+Removes spaces from the start only. 
+
+console.log(str2.trimStart()); // "hello  " 
+ 
+
+ 
+
+trimEnd() 
+
+Removes spaces from the end only. 
+
+console.log(str2.trimEnd()); // "  hello" 
+ 
+
+repeat(n) 
+
+Repeats string n times. 
+
+console.log("ha".repeat(3)); // "hahaha" 
+ 
+
+ replace(search, replaceWith) 
+
+Replaces first match of a string or regex. 
+
+let text2 = "hello world"; 
+console.log(text2.replace("world","JS")); // "hello JS" 
+ 
+
+ 
+
+replaceAll(search, replaceWith) 
+
+Replaces all matches. 
+
+let text3 = "hello world world"; 
+console.log(text3.replaceAll("world","JS")); // "hello JS JS" 
+ 
+
+ 
+
+split(separator) 
+
+Splits string into array of substrings using separator. 
+
+let csv = "a,b,c,d"; 
+console.log(csv.split(",")); // ["a","b","c","d"] 
+
+ 
+
+Basic Info 
+
+Concept 
+
+Example 
+
+String declaration 
+
+let str = "Hello" 
+
+Length 
+
+str.length → 5 
+
+Access character 
+
+str[0] or str.charAt(0) → "H" 
+
+ 
+
+Getting Part of a String 
+
+Method 
+
+Notes 
+
+Example 
+
+slice(start,end) 
+
+Returns part (supports negative) 
+
+"Hello".slice(1,4) → "ell" 
+
+substring(start,end) 
+
+Like slice, no negative 
+
+"Hello".substring(1,4) → "ell" 
+
+substr(start,length) 
+
+Start index + length 
+
+"Hello".substr(1,3) → "ell" 
+
+at(index) 
+
+Get character (supports negative) 
+
+"Hello".at(-1) → "o" 
+
+ 
+
+Changing Case 
+
+Method 
+
+Example 
+
+toUpperCase() 
+
+"hi".toUpperCase() → "HI" 
+
+toLowerCase() 
+
+"HI".toLowerCase() → "hi" 
+
+ 
+
+Trimming & Padding 
+
+Method 
+
+What it does 
+
+Example 
+
+trim() 
+
+Remove spaces both ends 
+
+" hi ".trim() → "hi" 
+
+trimStart() 
+
+Remove start spaces 
+
+" hi ".trimStart() → "hi " 
+
+trimEnd() 
+
+Remove end spaces 
+
+" hi ".trimEnd() → " hi" 
+
+padStart(targetLength, char) 
+
+Add chars at start 
+
+"5".padStart(3,"0") → "005" 
+
+padEnd(targetLength, char) 
+
+Add chars at end 
+
+"5".padEnd(3,"0") → "500" 
+
+ 
+
+Combining Strings 
+
+Method 
+
+Example 
+
+concat() 
+
+"Hello".concat(" ","JS") → "Hello JS" 
+
+Template literals 
+
+`Hi ${name}` → "Hi Udhayakumar" 
+
++ operator 
+
+"Hello" + " " + "JS" → "Hello JS" 
+
+ 
+
+Repeating Strings 
+
+Method 
+
+Example 
+
+repeat(n) 
+
+"ha".repeat(3) → "hahaha" 
+
+ 
+
+Replacing Text 
+
+Method 
+
+Example 
+
+replace(search,new) 
+
+"hello".replace("h","H") → "Hello" 
+
+replaceAll(search,new) 
+
+"ha ha".replaceAll("ha","ho") → "ho ho" 
+
+ 
+
+Splitting Strings 
+
+Method 
+
+Example 
+
+split(separator) 
+
+"a,b,c".split(",") → ["a","b","c"] 
+
+ 
+
+String Search 
+
+1️⃣ indexOf() 
+
+Returns the index of the first occurrence of a substring. 
+
+Returns -1 if not found. 
+
+let str = "Hello World"; 
+console.log(str.indexOf("o")); // 4 
+console.log(str.indexOf("z")); // -1 
+ 
+
+Can add start position: 
+
+console.log(str.indexOf("o", 5)); // 7 (starts searching from index 5) 
+ 
+
+ 
+
+2️⃣ lastIndexOf() 
+
+Returns the index of the last occurrence of a substring. 
+
+Returns -1 if not found. 
+
+let str = "Hello World"; 
+console.log(str.lastIndexOf("o")); // 7 
+ 
+
+ 
+
+3️⃣ search() 
+
+Searches for a substring or regular expression. 
+
+Returns the index of the first match or -1. 
+
+let str = "Hello World"; 
+console.log(str.search("World")); // 6 
+ 
+// Using regex 
+console.log(str.search(/world/i)); // 6 (i = ignore case) 
+ 
+
+ 
+
+4️⃣ match() 
+
+Returns an array of matches for a regular expression. 
+
+Returns null if no match. 
+
+let str = "The rain in Spain"; 
+console.log(str.match(/ain/));        // ["ain"] (first match) 
+console.log(str.match(/ain/g));       // ["ain","ain"] (all matches) 
+ 
+
+ 
+
+5️⃣ matchAll() 
+
+Returns all matches including capture groups, as an iterator. 
+
+Works only with global g regex. 
+
+let str = "The rain in Spain"; 
+let matches = str.matchAll(/ain/g); 
+for (const match of matches) { 
+    console.log(match[0]); // "ain" twice 
+} 
+ 
+
+Useful when you need detailed info about each match. 
+
+ 
+
+6️⃣ includes() 
+
+Returns true/false if substring is present. 
+
+let str = "Hello World"; 
+console.log(str.includes("Hello")); // true 
+console.log(str.includes("hi"));    // false 
+ 
+
+Can add start position: 
+
+console.log(str.includes("World", 6)); // true 
+console.log(str.includes("World", 7)); // false 
+ 
+
+ 
+
+7️⃣ startsWith() 
+
+Returns true/false if string starts with given substring. 
+
+let str = "Hello World"; 
+console.log(str.startsWith("Hello")); // true 
+console.log(str.startsWith("World")); // false 
+ 
+
+Can add position to start check: 
+
+console.log(str.startsWith("World", 6)); // true 
+ 
+
+ 
+
+8️⃣ endsWith() 
+
+Returns true/false if string ends with given substring. 
+
+let str = "Hello World"; 
+console.log(str.endsWith("World")); // true 
+console.log(str.endsWith("Hello")); // false 
+ 
+
+Can specify length to consider: 
+
+console.log(str.endsWith("Hello", 5)); // true 
+
+ 

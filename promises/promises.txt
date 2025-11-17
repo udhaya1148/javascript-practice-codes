@@ -1,0 +1,338 @@
+Promises: 
+
+Promise: 
+ A Promise is an object representing the eventual completion (or failure) of an asynchronous operation. It gives you .then(), .catch(), and .finally() methods to handle results or errors. 
+
+ 
+
+It determine status of execution using this able to check status like sucess or rejected , pending is default status 
+
+1. What is a Promise? 
+
+A Promise is a JavaScript object that represents the eventual result of an asynchronous operation. 
+ It allows you to write asynchronous code in a more readable and manageable way compared to callbacks. 
+
+Think of it like a “promise to deliver a result” in the future: 
+
+It may resolve (success) → you get the result. 
+
+It may reject (failure) → you get an error. 
+
+ 
+
+2. Promise States 
+
+A promise can be in one of three states: 
+
+Pending – initial state, the operation hasn’t finished yet. 
+
+Fulfilled (Resolved) – operation completed successfully. 
+
+Rejected – operation failed. 
+
+ 
+
+Syntax of a Promise 
+
+const myPromise = new Promise((resolve, reject) => { 
+  // Do something (like fetching data) 
+  let success = true; 
+ 
+  if (success) { 
+    resolve("Operation successful!"); 
+  } else { 
+    reject("Something went wrong!"); 
+  } 
+}); 
+ 
+
+Here: 
+
+resolve() → called when operation succeeds 
+
+reject() → called when operation fails 
+
+ 
+
+Advantages of Promises 
+
+Avoid Callback Hell 
+
+Instead of deeply nested callbacks, promises allow chaining with .then(). 
+
+doStep1() 
+  .then(result => doStep2(result)) 
+  .then(result => doStep3(result)) 
+  .catch(err => console.log(err)); 
+ 
+
+Better Error Handling 
+
+Errors can be caught in one place using .catch() instead of checking in each callback. 
+
+someAsyncTask() 
+  .then(result => anotherTask(result)) 
+  .catch(error => console.log("Error:", error)); 
+ 
+
+Chaining 
+
+Promises can return other promises, making sequential async operations readable. 
+
+fetchData() 
+  .then(processData) 
+  .then(saveData) 
+  .then(() => console.log("All done")); 
+
+ 
+
+Disadvantages of Promises 
+
+Still Asynchronous 
+
+Promises don’t make code synchronous; logic can still be tricky for beginners. 
+
+Error Handling Can Be Confusing 
+
+If you forget .catch(), you may get unhandled promise rejections. 
+
+Promise.reject("Oops"); // unhandled if no catch 
+
+ 
+
+Why Promises are better 
+
+Avoid callback hell (nested callbacks). 
+
+Easier error handling with .catch(). 
+
+Support chaining and sequencing async tasks more elegantly. 
+
+Can coordinate multiple asynchronous operations with Promise.all() or Promise.race(). 
+
+ 
+
+ 
+
+Promise methods: 
+
+Method 
+
+Behavior 
+
+.then() 
+
+Runs on success 
+
+.catch() 
+
+Runs on failure 
+
+.finally() 
+
+Runs always 
+
+Promise.resolve() 
+
+Creates instant success 
+
+Promise.reject() 
+
+Creates instant failure 
+
+Promise.all() 
+
+All succeed or first fail 
+
+Promise.allSettled() 
+
+Wait all (success/fail) 
+
+Promise.race() 
+
+First settled (any result) 
+
+Promise.any() 
+
+First fulfilled only 
+
+ 
+
+1. .then() → Handle fulfilled result 
+
+const promise1 = Promise.resolve("Task completed"); 
+ 
+promise1.then(result => { 
+  console.log("✅ then:", result); 
+}); 
+ 
+
+Output: 
+
+✅ then: Task completed 
+ 
+
+ 
+
+⚠️ 2. .catch() → Handle rejection 
+
+const promise2 = Promise.reject("Something went wrong"); 
+ 
+promise2.catch(error => { 
+  console.log("❌ catch:", error); 
+}); 
+ 
+
+Output: 
+
+❌ catch: Something went wrong 
+ 
+
+ 
+
+🔁 3. .finally() → Always execute (success or fail) 
+
+const promise3 = new Promise((resolve, reject) => { 
+  let success = true; 
+  setTimeout(() => { 
+    if (success) resolve("Data loaded"); 
+    else reject("Failed to load"); 
+  }, 1000); 
+}); 
+ 
+promise3 
+  .then(result => console.log("✅ then:", result)) 
+  .catch(err => console.log("❌ catch:", err)) 
+  .finally(() => console.log("🔚 finally: cleanup done")); 
+ 
+
+Output: 
+
+✅ then: Data loaded 
+🔚 finally: cleanup done 
+ 
+
+ 
+
+⚡ 4. Promise.resolve() → Instantly create a resolved promise 
+
+const promise4 = Promise.resolve("Instant success!"); 
+ 
+promise4.then(value => console.log("✅", value)); 
+ 
+
+Output: 
+
+✅ Instant success! 
+ 
+
+ 
+
+❌ 5. Promise.reject() → Instantly create a rejected promise 
+
+const promise5 = Promise.reject("Instant failure!"); 
+ 
+promise5.catch(error => console.log("❌", error)); 
+ 
+
+Output: 
+
+❌ Instant failure! 
+ 
+
+ 
+
+🧮 6. Promise.all() → Wait for all promises to succeed or fail early 
+
+const promiseA = Promise.resolve("A done"); 
+const promiseB = Promise.resolve("B done"); 
+const promiseC = Promise.reject("C failed"); 
+ 
+Promise.all([promiseA, promiseB, promiseC]) 
+  .then(results => console.log("✅ all:", results)) 
+  .catch(error => console.log("❌ all:", error)); 
+ 
+
+Output: 
+
+❌ all: C failed 
+ 
+
+👉 If all succeed: 
+
+Promise.all([promiseA, promiseB]) 
+  .then(results => console.log(results)); 
+ 
+
+Output: 
+
+[ 'A done', 'B done' ] 
+ 
+
+ 
+
+⚖️ 7. Promise.allSettled() → Wait until all settle (no early failure) 
+
+const promiseX = Promise.resolve("X success"); 
+const promiseY = Promise.reject("Y error"); 
+ 
+Promise.allSettled([promiseX, promiseY]) 
+  .then(results => console.log("🧾 allSettled:", results)); 
+ 
+
+Output: 
+
+🧾 allSettled: [ 
+  { status: 'fulfilled', value: 'X success' }, 
+  { status: 'rejected', reason: 'Y error' } 
+] 
+ 
+
+ 
+
+🏁 8. Promise.race() → Return first settled (success or failure) 
+
+const slow = new Promise(resolve => setTimeout(() => resolve("slow done"), 2000)); 
+const fast = new Promise(resolve => setTimeout(() => resolve("fast done"), 1000)); 
+ 
+Promise.race([slow, fast]) 
+  .then(result => console.log("🏁 race:", result)); 
+ 
+
+Output: 
+
+🏁 race: fast done 
+ 
+
+👉 If the fastest one rejects, .catch() will handle it. 
+
+ 
+
+🥇 9. Promise.any() → Return first fulfilled (ignore rejections) 
+
+const p1 = Promise.reject("fail 1"); 
+const p2 = Promise.reject("fail 2"); 
+const p3 = Promise.resolve("success 3"); 
+ 
+Promise.any([p1, p2, p3]) 
+  .then(result => console.log("🥇 any:", result)) 
+  .catch(error => console.log("❌ any:", error)); 
+ 
+
+Output: 
+
+🥇 any: success 3 
+ 
+
+👉 If all fail: 
+
+Promise.any([Promise.reject("x"), Promise.reject("y")]) 
+  .catch(e => console.log("❌ AggregateError:", e.errors)); 
+ 
+
+Output: 
+
+❌ AggregateError: [ 'x', 'y' ] 
+ 
+
+ 

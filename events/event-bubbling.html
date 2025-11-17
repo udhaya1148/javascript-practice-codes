@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="parent" style="padding: 20px; background: lightblue">
+      Parent
+      <button id="child">Click Me</button>
+    </div>
+
+    <script>
+      document.getElementById("parent").addEventListener("click", () => {
+        console.log("Parent clicked");
+      });
+
+      document.getElementById("child").addEventListener("click", () => {
+        console.log("Child clicked");
+        event.stopPropagation(); //use this if dont want to go for parent
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="head" onclick="this.innerHTML='Oops!'"> Java Script</h1>
+    <h1 id="heading"> Scripting language</h1>
+    <div id="add">
+
+    </div>
+</body>
+<script>
+    let element = document.getElementById('head'); //selecting element by id
+    element.textContent += ' Learning'; //added text content in selected id it added as text
+    // element.innerHTML = "Practice" // it change the element content java script to practice
+
+    let element1 = document.getElementById('add'); // add within div tag
+    element1.innerHTML = '<p>Programming</p>'; //add tag innerHTML add content as html content
+    element1.className = 'divClass'; //adding classname
+    //---------- adding css ------------
+    element1.style.color = 'red';
+    element1.style.font = 'bold 16px Arial'
+    element1.style.backgroundColor = 'blue'
+    //----------------------------------------
+
+    //using tagname
+    let tagname = document.getElementsByTagName('h1'); //it select select my tag name and return array for all selected tags
+    console.log(tagname[1]) // use index to get particular tag
+    tagname[1].style.color = 'green';
+    tagname[0].style.color = 'gray'  //while using tag name use index to select particular tag if many same tag available
+
+    //using queryselector used select elements and return only first element
+    let queryselctor = document.querySelector('#add'); // select by id
+    console.log(queryselctor);
+    let queryselctor1 = document.querySelector('.divClass'); // select by classname
+    console.log(queryselctor1);
+    let queryselctor2 = document.querySelector('h1'); // select by tagname
+    console.log(queryselctor2);
+
+    //create tag using java script method (Dynamically creating)
+    let para = document.createElement('p');
+    para.textContent = 'creating tag using javascript'  
+    para.id = 'pid'
+
+    //adding created tag to html (webpage)
+    // element.append(para); // added to h1 tag using append add after existing h1 tag
+    element1.prepend(para); // prepend add before existing tag (A DOM element can exist in only one place at a time.)
+    para.remove() // it helps to remove created element syntax (variablename.remove())
+    console.log(para)
+
+</script>
+</html>

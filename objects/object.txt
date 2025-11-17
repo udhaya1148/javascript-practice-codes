@@ -1,0 +1,997 @@
+JavaScript Object 
+
+ 
+
+Objects store data in key–value pairs. 
+
+Keys are usually strings; values can be anything. 
+
+In javascript object can able to define methods and properties 
+
+Use {} for object 
+
+ 
+
+//creating object --> property 
+
+let item =  { 
+
+  name:'Phone', 
+
+  price:10000, 
+
+  quantity:1 
+
+} 
+
+console.log(item) 
+
+  
+
+//another way to create object 
+
+let item2 = { 
+
+  name:'charger', 
+
+  price:'700' 
+
+} 
+
+console.log(item2) 
+
+ 
+
+Output: 
+
+{ name: 'Phone', price: 10000, quantity: 1 } 
+{ name: 'charger', price: '700' } 
+
+ 
+
+ 
+
+Accessing object using dot notation 
+
+//creating object --> property 
+
+let item =  { 
+
+  name:'Phone', 
+
+  price:10000, 
+
+  quantity:1 
+
+} 
+
+console.log(item) 
+
+  
+
+//accessing object using dot(.) notation 
+
+console.log('price is :',item.price) 
+
+ 
+
+ 
+
+ 
+
+Output: 
+
+{ name: 'Phone', price: 10000, quantity: 1 } 
+price is : 10000 
+
+ 
+
+ 
+
+Using dot(.) notation can able to add/change values  
+
+ 
+
+//change value using . notation 
+
+item.price = 150000 
+
+console.log('Changed price is :',item.price) 
+
+ 
+
+//add value using dot notation 
+
+item.color = 'blue' 
+
+console.log("added color is:",item.color) 
+
+console.log('updated objects :',item) 
+
+ 
+
+Output: 
+
+{ name: 'Phone', price: 10000, quantity: 1 } 
+price is : 10000 
+Changed price is : 150000 
+added color is: blue 
+updated objects : { name: 'Phone', price: 150000, quantity: 1, color: 'blue' } 
+
+ 
+
+Using square bracket notation insted of dot notation 
+
+Bracket notation is useful when: 
+
+The key has spaces or special characters 
+
+You want to use a variable as the key 
+
+ 
+
+//using square bracket notation 
+
+console.log(item['price']) 
+
+item['color'] = 'black' 
+
+  
+
+//insted of using value using square bracket notation can use variable also 
+
+  
+
+let key = 'price' 
+
+item[key] = 27500 
+
+item.key =28000 // while using square notation dot notation will not work  
+
+console.log('using square notation:',item) 
+
+ 
+
+Output: 
+
+using square notation: { 
+  name: 'Phone', 
+  price: 27500, 
+  quantity: 1, 
+  color: 'black', 
+  key: 28000 
+} 
+
+ 
+
+// nesting object: 
+
+let item =  { 
+
+  name:'Phone', 
+
+  price:10000, 
+
+  quantity:1, 
+
+  // nesting object 
+
+  dimensions:{ 
+
+    length:7, 
+
+    breadth:3.5, 
+
+    height:.5 
+
+  } 
+
+} 
+
+console.log(item) 
+
+ 
+
+Output: 
+
+{ 
+  name: 'Phone', 
+  price: 10000, 
+  quantity: 1, 
+  dimensions: { length: 7, breadth: 3.5, height: 0.5 } 
+} 
+
+ 
+
+Nesting array within object 
+
+let item =  { 
+
+  name:'Phone', 
+
+  price:10000, 
+
+  quantity:1, 
+
+  //adding array within object 
+
+  categories:['electronics','mobile'], 
+
+  // nesting object 
+
+  dimensions:{ 
+
+    length:7, 
+
+    breadth:3.5, 
+
+    height:.5 
+
+  } 
+
+} 
+
+console.log(item) 
+
+//get array values 
+
+console.log(item.categories[0]) 
+
+ 
+
+Output: 
+
+{ 
+  name: 'Phone', 
+  price: 10000, 
+  quantity: 1, 
+  categories: [ 'electronics', 'mobile' ], 
+  dimensions: { length: 7, breadth: 3.5, height: 0.5 } 
+} 
+electronics 
+
+ 
+
+If any function added inside object it is called methods 
+
+ 
+
+//Adding methods(function) in objects 
+
+let item =  { 
+
+  name:'Phone', 
+
+  price:10000, 
+
+  quantity:1, 
+
+  //adding method in object anything function added in object is called method 
+
+  buy: function(){ 
+
+    console.log('item added to cart') 
+
+  }, 
+
+  //simplest way to add method(function) 
+
+  addToList(){ 
+
+    console.log('item added to list') 
+
+  } 
+
+} 
+
+console.log(item) 
+
+//call methods 
+
+item.buy() 
+
+item.addToList() 
+
+Output: 
+
+{ 
+  name: 'Phone', 
+  price: 10000, 
+  quantity: 1, 
+  buy: [Function: buy], 
+  addToList: [Function: addToList] 
+} 
+item added to cart 
+item added to list 
+
+ 
+
+ 
+
+1. Objects in JavaScript 
+
+Difference between for...of and for...in 
+
+Feature 
+
+for...in 
+
+for...of 
+
+Loops over 
+
+Keys/indexes 
+
+Values 
+
+Works on 
+
+Objects, arrays 
+
+Iterables (arrays, strings, maps, sets) 
+
+Example 
+
+for (let i in arr) 
+
+for (let val of arr) 
+
+Output for arr 
+
+Indexes (0,1,2…) 
+
+Values (10,20,30…) 
+
+Example: 
+
+let arr = [10, 20, 30]; 
+ 
+for (let i in arr) console.log(i);   // 0 1 2 
+for (let v of arr) console.log(v);  // 10 20 30 
+ 
+
+ 
+
+Object 
+
+The whole thing (person) is an object. 
+
+Objects are collections of properties. 
+
+👉 person is the object. 
+
+ 
+
+Property 
+
+Each entry inside the object is called a property. 
+
+A property is made up of a key (name) and a value. 
+
+Example: 
+
+name: 'ram' is one property 
+
+age: 20 is another property 
+
+city: 'cbe' is another property 
+
+ 
+
+Key 
+
+The left side of each property. 
+
+Always a string (or symbol), even if you don’t put quotes. 
+
+👉 Keys in this object: "name", "age", "city" 
+
+ 
+
+Value 
+
+The right side of each property. 
+
+Can be anything: string, number, boolean, array, object, function, etc. 
+
+👉 Values in this object: "ram", 20, "cbe" 
+
+ 
+
+An object is a collection of key-value pairs. 
+
+The key is a string (property name). 
+
+The value can be any data type (string, number, array, another object, function, etc.). 
+
+Example: 
+
+let person = { 
+
+  name: "John", 
+
+  age: 30, 
+
+  isStudent: false 
+
+}; 
+
+Here: 
+
+name → key, "John" → value 
+
+ age → key, 30 → value 
+
+isStudent → key, false → value 
+
+ 
+
+2. Accessing Values 
+
+You can access object values in two ways: 
+
+(a) Dot notation (obj.key) 
+
+console.log(person.name);   // John 
+console.log(person.age);    // 30 
+ 
+
+(b) Bracket notation (obj['key']) 
+
+console.log(person["name"]);  // John 
+console.log(person["age"]);   // 30 
+ 
+
+👉 Bracket notation is useful when: 
+
+The key has spaces or special characters 
+
+You want to use a variable as the key 
+
+Example for using key : 
+
+let person = { 
+
+  name: "John", 
+
+  age: 30, 
+
+  isStudent: false 
+
+}; 
+
+let key = "isStudent" 
+
+console.log(person[key]);    
+
+let key = "isStudent"; 
+console.log(person[key]);    
+
+ 
+
+Output: 
+
+False 
+
+ 
+
+3. Object Methods 
+
+Objects can also store functions as values. These are called methods. 
+
+Example: 
+
+let car = { 
+  brand: "Tesla", 
+  model: "Model 3", 
+  start: function() { 
+    return "Car started!"; 
+  } 
+}; 
+ 
+console.log(car.start()); // Car started! 
+ 
+
+👉 Shortcut syntax: 
+
+let car = { 
+  brand: "Tesla", 
+  start() { 
+    return "Car started!"; 
+  } 
+}; 
+
+ 
+
+Output: 
+
+car started 
+
+ 
+
+4️⃣ Looping Through Objects 
+
+A. for...in loop 
+
+Iterates over keys/index use on mainly object or array: 
+
+let person={ 
+
+  name:'ram', 
+
+  age:20, 
+
+  city:'cbe' 
+
+} 
+
+for(let key in person){ 
+
+  console.log(key+' '+person[key])    // here key stores key name and person[key] store values why person[key] means value inside the key , key is lable 
+
+} 
+
+ 
+
+Output: 
+
+name ram 
+age 20 
+city cbe 
+
+ 
+
+B. using forEach loop:  // iterrate each values only for array 
+
+let person={ 
+
+  name:'ram', 
+
+  age:20, 
+
+  city:'cbe' 
+
+} 
+
+console.log(Object.keys(person)) // only print keys 
+
+console.log(Object.values(person)) //only print values 
+
+  
+
+Object.keys(person).forEach(key => console.log(key.person[key])) 
+
+ Output: 
+
+[ 'name', 'age', 'city' ] 
+[ 'ram', 20, 'cbe' ] 
+name ram 
+age 20 
+city cbe 
+
+ 
+
+ 
+
+Example: 
+
+ 
+
+let person={ 
+
+  name:'ram', 
+
+  age:20, 
+
+  city:'cbe' 
+
+} 
+
+console.log(Object.keys(person)) // only print keys 
+
+console.log(Object.values(person)) //only print values 
+
+  
+
+Object.keys(person).forEach(key => console.log(key)) // print only key 
+
+  
+
+Object.values(person).forEach(value => console.log(value)) //print only value 
+
+  
+
+Object.entries(person).forEach(([key,value])=>{ 
+
+  console.log(key, value)     // print key and value 
+
+}) 
+
+Output: 
+
+[ 'name', 'age', 'city' ] 
+[ 'ram', 20, 'cbe' ] 
+name 
+age 
+city 
+ram 
+20 
+cbe 
+name ram 
+age 20 
+city cbe 
+
+ 
+
+Object Method: 
+
+ 
+
+Object.keys(), Object.values(), and Object.entries() are built-in methods of the global Object class. They return arrays: keys() gives property names, values() gives property values, and entries() gives key-value pairs. They only consider the object’s own enumerable properties (not inherited ones). 
+
+1. Object.keys(obj) 
+
+A method. 
+
+Returns an array of the object’s own enumerable property names (keys). 
+
+Example: 
+
+let person = { name: "Ram", age: 20, city: "Cbe" }; 
+console.log(Object.keys(person));  
+// ["name", "age", "city"] 
+ 
+
+ 
+
+2. Object.values(obj) 
+
+A method. 
+
+Returns an array of the object’s own enumerable property values. 
+
+Example: 
+
+console.log(Object.values(person));  
+// ["Ram", 20, "Cbe"] 
+ 
+
+ 
+
+3. Object.entries(obj) (bonus) 
+
+A method. 
+
+Returns an array of key-value pairs (each pair is an array). 
+
+Example: 
+
+console.log(Object.entries(person));  
+// [["name","Ram"], ["age",20], ["city","Cbe"]] 
+
+ 
+
+ 
+
+Practice Question: 
+
+ 
+
+check if a key exists in an object? 
+
+ 
+
+let person={ 
+
+  name:'ram', 
+
+  age:20, 
+
+  city:'cbe' 
+
+} 
+
+console.log("name" in person ) 
+
+console.log(person.hasOwnProperty("age")) 
+
+ 
+
+Output: 
+
+true 
+true 
+
+ 
+
+How to add/delete a property? 
+
+let person={ 
+
+  name:'ram', 
+
+  age:20, 
+
+  city:'cbe' 
+
+} 
+
+person.gender="male" 
+
+console.log(Object.entries("Adding ",person)) 
+
+delete person.city 
+
+console.log(Object.entries(person)) 
+
+ 
+
+Output: 
+
+[ 
+  [ 'name', 'ram' ], 
+  [ 'age', 20 ], 
+  [ 'city', 'cbe' ], 
+  [ 'gender', 'male' ] 
+] 
+[ [ 'name', 'ram' ], [ 'age', 20 ], [ 'gender', 'male' ] ] 
+
+ 
+
+Loop through object and sum numeric values 
+
+ 
+
+Code: 
+
+let marks={ 
+
+  science:99, 
+
+  maths:100, 
+
+  social:93, 
+
+  tamil:98, 
+
+  english: 99 
+
+} 
+
+let total = 0 
+
+for(key in marks){ 
+
+  total+=marks[key] 
+
+} 
+
+console.log("Total mark is :",total) 
+
+ 
+
+Output: 
+
+Total mark is : 489 
+
+ 
+
+Clone an object 
+
+Code: 
+
+let marks={ 
+
+  science:99, 
+
+  maths:100, 
+
+  social:93, 
+
+  tamil:98, 
+
+  english: 99 
+
+} 
+
+let clone = {...marks} 
+
+console.log(clone) 
+
+ 
+
+Output: 
+
+{ science: 99, maths: 100, social: 93, tamil: 98, english: 99 } 
+
+ 
+
+Merge two objects 
+
+let obj1 = {a:1} 
+
+let obj2 = {b:2} 
+
+let merged = {...obj1,...obj2} 
+
+console.log(merged) 
+
+ 
+
+Output: 
+
+{ a: 1, b: 2 } 
+
+ 
+
+Write a function to invert an object → swap keys and values. 
+
+Code: 
+
+obj= {a: 1, b: 2} 
+
+function invert(obj){ 
+
+  inverted = {} 
+
+  for (key in obj){ 
+
+    inverted[obj[key]]=key 
+
+  } 
+
+  return inverted 
+
+} 
+
+console.log(invert(obj)) 
+
+ 
+
+Output: 
+
+{ '1': 'a', '2': 'b' } 
+
+Write a function to find the key of the maximum value in an object. 
+
+Code: 
+
+obj = {apple: 5, banana: 12, orange: 8}; 
+
+max = Object.entries(obj).reduce((a,b)=> a[1]>b[1] ? a:b) 
+
+console.log(max) 
+
+ 
+
+Output: 
+
+[ 'banana', 12 ] 
+
+ 
+
+Write a function that compares two objects and checks if they are equal. 
+
+Code: 
+
+obj1={a:1, b:2}; 
+
+obj2={a:1, b:3}; 
+
+  
+
+function isEqual(obj1,obj2){ 
+
+  let keys1 = Object.keys(obj1) 
+
+  let keys2 = Object.keys(obj2) 
+
+   
+
+  if (keys1.length !== keys2.length) { 
+
+    return false 
+
+  } 
+
+   
+
+  for(key of keys1){ 
+
+    if(obj1[key] !== obj2[key]){ 
+
+      return false 
+
+    } 
+
+  } 
+
+  return true 
+
+} 
+
+console.log(isEqual(obj1,obj2)) 
+
+ 
+
+Output: 
+
+false 
+
+ 
+
+Convert an array of objects into a single object, using a key as identifier. 
+
+Code: 
+
+arr=[{id: 1, name: "ram"}, {id: 2, name: "sam"}] 
+
+function arrayToObject(obj){ 
+
+  let result ={} 
+
+  for(item of obj){ 
+
+    result[item.id]=item.name 
+
+  } 
+
+  return result 
+
+} 
+
+console.log(arrayToObject(arr)) 
+
+Output: 
+
+{ '1': 'ram', '2': 'sam' } 
+
+ 
+
+Using reduce: 
+
+arr=[{id: 1, name: "ram"}, {id: 2, name: "sam"}] 
+
+result = arr.reduce((acc,obj)=> { 
+
+  acc[obj.id]=obj.name 
+
+  return acc 
+
+},{}) 
+
+  
+
+console.log(result) 
+
+Output: 
+
+{ '1': 'ram', '2': 'sam' } 
+
+ 
+
+ 
+
+Given a nested object, write a function to access values safely. 
+
+Code: 
+
+const person = { 
+
+  name: "John", 
+
+  address: { 
+
+    city: "Cbe", 
+
+    zip: 641001 
+
+  } 
+
+}; 
+
+console.log(person.address.city) 
+
+Output: 
+
+Cbe 

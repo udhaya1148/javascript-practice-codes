@@ -1,0 +1,32 @@
+<!-- <ul id="list">
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Mango</li>
+</ul>
+
+<script>
+  const list = document.getElementById("list");
+
+  list.addEventListener("click", function(event) {
+    // event.target = element that was actually clicked
+    alert("You clicked:"+ event.target.textContent);
+  });
+</script> -->
+
+<ul id="list">
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Mango</li>
+</ul>
+
+<script>
+  const list = document.getElementById("list");
+
+  list.addEventListener("click", function(event) {
+    // Check if the clicked element is an <li>
+    if (event.target.tagName === "LI") {
+      // Change the text color to blue
+      event.target.style.color = "blue";
+    }
+  });
+</script>

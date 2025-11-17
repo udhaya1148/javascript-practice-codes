@@ -1,0 +1,200 @@
+Closure: 
+
+Functions inside functions 
+
+Lexical scope 
+
+ 
+
+A closure is not a separate “thing” like a function or a method.  
+
+It’s a feature (or behaviour) of JavaScript functions. 
+
+A closure happens  when a function remembers the variables from its outer (enclosing) function, even after the outer function has finished executing. 
+
+A closure gives you access to an outer function’s scope from an inner function. 
+
+ 
+
+Functions inside functions 
+
+Example: 
+
+function outer() { 
+  let outerVar = "I am outside!"; 
+ 
+  function inner() { 
+    console.log(outerVar); // can access outerVar 
+  } 
+ 
+  return inner; 
+} 
+ 
+const innerFunc = outer(); // outer() runs and returns inner() 
+innerFunc(); // "I am outside!" 
+ 
+
+Step-by-step explanation: 
+
+outer() runs, defines outerVar and inner(). 
+
+outer() returns the inner function. 
+
+Even though outer() has finished execution, innerFunc() still remembers outerVar — this is the closure. 
+
+ 
+
+Example: 
+
+ 
+
+function counter() { 
+
+  let count = 0; // private variable 
+
+  
+
+  return function() { 
+
+    count++; 
+
+    return count; 
+
+  }; 
+
+} 
+
+  
+
+const myCounter = counter(); 
+
+console.log(myCounter()); // 1 
+
+console.log(myCounter()); // 2 
+
+console.log(myCounter()); // 3  
+
+Closure Example: 
+
+Step 1: What happens when you call counter() 
+
+function counter() { 
+  let count = 0; 
+ 
+  return function() { 
+    count++; 
+    return count; 
+  }; 
+} 
+ 
+
+When you call counter(), JavaScript creates a new local execution context for that function. 
+
+Inside that context, a variable count is created with an initial value 0. 
+
+Then counter() returns the inner function. 
+
+At this point: 
+
+const myCounter = counter(); 
+ 
+
+myCounter now holds a reference to the inner function. 
+
+BUT here’s the special part 👇 
+
+Even though counter() finished running, JavaScript does not remove count from memory, because the inner function still uses it. 
+
+That’s the closure: 
+
+The inner function “closes over” (remembers) the variable count from its parent scope. 
+
+ 
+
+🔹 Step 2: Why is count preserved? 
+
+Each time you call myCounter(), you’re calling the same inner function, and that inner function still has access to its own copy of the count variable stored in the closure. 
+
+So: 
+
+console.log(myCounter()); // count = 1 
+console.log(myCounter()); // count = 2 
+console.log(myCounter()); // count = 3 
+ 
+
+Because the closure keeps a persistent reference to count, its value is updated and remembered across calls — not reset to 0 each time. 
+
+ 
+
+🔹 Step 3: Why is count private? 
+
+Let’s try to access it directly: 
+
+console.log(count); // ❌ ReferenceError: count is not defined 
+ 
+
+This happens because: 
+
+count is declared inside the counter() function. 
+
+It’s not in the global scope. 
+
+Only the returned inner function has access to it. 
+
+So from the outside world, count is invisible — there’s no way to reach it except through the closure. 
+
+This creates data privacy — no other code can directly modify or read count, preventing unwanted interference. 
+
+ 
+
+Lexical scope 
+
+Lexical scope means that a function can access variables from its own scope and from its outer scopes — and this access is decided by where the function is written in the code, not where it’s called. 
+
+Lexical scope means the order of variable or function access is determined by where they are written in the code (their physical placement). 
+
+Lexical scope is the reason closures work in JavaScript — because the inner function ‘remembers’ variables from the outer function’s scope even after it finishes. 
+
+Example:  
+
+let a = 10; 
+
+function outer(){ 
+
+  let b = 20: 
+
+  // here outer can access a,b 
+
+  function inner(){ 
+
+    let c = 30; 
+
+    // here inner can access a,b,c 
+
+  } 
+
+} 
+
+ 
+
+Example : inner can access outer variable  
+
+function outer() { 
+
+  let name = "kumar"; 
+
+  function inner() { 
+
+    console.log(name); // 'inner' can access 'name' from 'outer' 
+
+  } 
+
+  inner(); 
+
+} 
+
+outer(); 
+
+Here, inner() can use name because it’s lexically inside outer(). 
+ That’s how JavaScript builds the scope chain — based on where functions are written. 
+

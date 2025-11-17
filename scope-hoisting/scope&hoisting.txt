@@ -1,0 +1,465 @@
+Scope & Hoisting 
+
+ Global vs local scope 
+
+Function scope, block scope 
+
+Hoisting behavior (var, let, const) 
+
+Overview: 
+
+Scope = where a variable is visible / accessible in code. 
+
+Global scope — available everywhere. 
+
+Function scope — variables declared with var inside a function are visible throughout that function. 
+
+Block scope — variables declared with let / const are visible only inside the nearest { ... }. 
+
+Hoisting = how declarations are processed before code runs: 
+
+var declarations are hoisted (declaration moved up) but initializations stay in place → can be undefined. 
+
+let and const are hoisted differently — they are in a Temporal Dead Zone until their line runs → accessing them early throws ReferenceError. 
+
+IIFE (Immediately Invoked Function Expression) — a function you declare and run immediately to create a private scope. 
+
+Global Scope: 
+
+When a variable or function is declared outside of any function or block, it is global scope. 
+
+it can be accessed from anywhere in JavaScript code — inside functions, blocks, or directly in the global space. 
+
+let name = "kumar"; // 🌍 Global scope 
+
+function greet() { 
+
+  console.log("Hello " + name); // ✅ name can able to use inside function  
+
+} 
+
+greet(); // Output: Hello kumar 
+
+console.log(name); // ✅ name can use outside function also. 
+
+Code explanation: 
+
+name is declared outside any function → so it’s global. 
+
+Both inside greet() and outside it, name can be used. 
+
+Why Global Scope Can Be Dangerous (Global Pollution) 
+
+If you have too many global variables, they can: 
+
+Overwrite each other accidentally (naming conflict) 
+
+Make debugging harder 
+
+Cause unexpected behavior if scripts share the same names 
+
+Example: 
+
+var user = "Ram"; 
+// Another script 
+var user = "Sita"; // ⚠️ Overwrites the first one 
+console.log(user); // Output: Sita 
+
+ 
+
+Local Scope in JavaScript: 
+
+When a variable is declared inside a function or block, it is said to be in the local scope. 
+
+It is only accessible within that function or block — not outside of it. 
+
+ 
+
+Example: Function Local Scope: 
+
+function greet() { 
+
+  let name = "kumar";  // 🌱 Local variable 
+
+  console.log("Hello " + name); // ✅ Accessible here 
+
+} 
+
+greet(); 
+
+console.log(name); // ❌ Error: name is not defined 
+
+Explanation: 
+
+name is declared inside the greet() function → so it is local to that function. 
+
+use it only inside greet(). 
+
+Trying to access it outside causes an error. 
+
+Example Local Scope inside Blocks 
+
+(Local scope also happens inside {} when using let or const.) 
+
+{ 
+
+  let city = "Chennai"; // 🌱 Local to this block 
+
+  console.log(city); // ✅ Chennai 
+
+} 
+
+console.log(city); // ❌ Error: city is not defined 
+
+ 
+
+Why Local Scope is Useful 
+
+Prevents variable name conflicts 
+
+Keeps data safe and private 
+
+Makes your code easier to maintain 
+
+ 
+
+Function Scope 
+
+When a variable is declared inside a function (using var, let, or const), it has function scope. 
+
+ It is only accessible inside that function — not outside of it. 
+
+Example: 
+
+function greet() { 
+  let name = "kumar"; // 🌱 Function-scoped variable 
+  console.log("Hello " + name); // ✅ Accessible inside the function 
+} 
+ 
+greet(); 
+ 
+console.log(name); // ❌ Error: name is not defined 
+ 
+
+Explanation: 
+
+name exists only inside greet() 
+
+Outside the function, JavaScript does not know about it 
+
+ 
+
+Function Scope with var 
+
+Variables declared with var are function-scoped, not block-scoped. 
+
+function testVar() { 
+  if (true) { 
+    var city = "Chennai"; // Function-scoped var inside the blocked scope it does not consider as block scope it consider as function scope 
+  } 
+  console.log(city); // ✅ Chennai (accessible within the function) 
+} 
+ 
+testVar(); 
+ 
+console.log(city); // ❌ Error: city is not defined 
+ 
+
+Block Scope 
+
+A variable has block scope if it is declared inside a block { ... } using let or const. 
+ 
+
+It is only accessible inside that block and cannot be accessed outside of it. 
+
+Only let and const create block-scoped variables. 
+
+Variables declared with var ignore block scope, but are still function-scoped. 
+
+Block scope helps avoid conflicts and keeps variables private. 
+
+ 
+
+A block can be: 
+
+an if statement 
+
+a for loop 
+
+a while loop 
+
+any code wrapped in {} 
+
+Example: Block Scope with if 
+
+if (true) { 
+  let city = "Chennai"; // 🌱 Block-scoped variable 
+  const country = "India"; // 🌱 Also block-scoped 
+  console.log(city);    // ✅ Chennai 
+  console.log(country); // ✅ India 
+} 
+ 
+console.log(city);    // ❌ Error: city is not defined 
+console.log(country); // ❌ Error: country is not defined 
+ 
+
+ 
+
+Hoisting: 
+
+Hoisting is JavaScript’s default behavior of moving variable and function declarations to the top of their scope (global or function) before code execution. 
+
+Important: Only declarations(variables) are hoisted, not initializations(values). 
+
+Example 1: Function Hoisting 
+
+greet(); // ✅ Works, because function is hoisted 
+ 
+function greet() { 
+  console.log("Hello!"); 
+} 
+ 
+
+Explanation: 
+
+The function greet is hoisted to the top. 
+
+That’s why you can call it before its definition. 
+
+Step 1: Compilation Phase (Hoisting) 
+
+Before running your code, JavaScript compiles it and moves function declarations to the top of their scope (global or function). 
+
+Internally, JS sees it like this: 
+
+function greet() {          // ✅ Declaration hoisted 
+  console.log("Hello!"); 
+} 
+ 
+greet(); // Now this works fine 
+ 
+
+The entire function body is hoisted, not just the name. 
+
+That’s why you can call greet() before its declaration in the code. 
+
+ 
+
+Step 2: Execution Phase 
+
+Now JS executes the code line by line: 
+
+greet(); → calls the function → prints "Hello!" 
+
+function greet() { ... } → already hoisted, so nothing new happens 
+
+Example with function expression: 
+
+sayHi(); // ❌ Error: Cannot access 'sayHi' before initialization 
+
+ const sayHi = function() { 
+
+  console.log("Hi!"); 
+
+}; 
+
+Here, only the variable sayHi is hoisted (TDZ for const), not the function body. 
+
+Hoisting in var: 
+
+Example  
+
+console.log(name); // ✅ undefined 
+var name = "kumar"; 
+console.log(name); // ✅ kumar 
+ 
+
+Step-by-step: 
+ JS treats it like this internally: 
+
+var name;         // ✅ Declaration hoisted 
+console.log(name); // undefined 
+name = "Udhay";    // Initialization happens here 
+console.log(name); // "kumar" 
+
+ 
+
+ 
+
+ 
+
+Hoisting in let and const: 
+
+Variables declared with let and const are hoisted, but they are in the Temporal Dead Zone (TDZ) until their declaration is reached. 
+
+Accessing them before declaration causes an error. 
+
+Example: 
+
+console.log(age); // ❌ ReferenceError 
+
+let age = 25; 
+
+  
+
+console.log(city); // ❌ ReferenceError 
+
+const city = "Chennai"; 
+
+ 
+
+ 
+
+Key Points 
+
+Function declarations are fully hoisted (can be called before definition). 
+
+var variables are hoisted but initialized with undefined. 
+
+let and const are hoisted but cannot be accessed before declaration (TDZ). 
+
+Hoisting only moves declarations, not assignments. 
+
+Declaration 
+
+Hoisted? 
+
+Can Access Before? 
+
+var 
+
+Yes 
+
+✅ undefined 
+
+let 
+
+Yes 
+
+❌ ReferenceError 
+
+const 
+
+Yes 
+
+❌ ReferenceError 
+
+Function 
+
+Yes 
+
+✅ Fully 
+
+Function Expression (var/let/const) 
+
+Partially 
+
+Depends (like var/TDZ) 
+
+ 
+
+6) Immediately-invoked Function Expressions (IIFE) 
+
+It’s a function that is defined and executed immediately after it is created. 
+
+IIFE is a function expression, not a function declaration. 
+
+The first pair of parentheses (function(){}) turns it into an expression. 
+
+The second pair () immediately invokes it. 
+
+Variables inside IIFE are private → safe from global pollution. 
+
+Immediate execution: Code runs as soon as it is defined. 
+
+Avoid name conflicts: Useful when including multiple scripts on the same page. 
+
+Only use variable within the function outside the function unable to use the variable. 
+
+IIFE function only once will run unable to reuse this function 
+
+Syntax: 
+
+(function() { 
+    // code inside IIFE 
+})(); 
+ 
+
+Or with arrow function: 
+
+(() => { 
+    // code inside IIFE 
+})(); 
+
+ 
+
+Example 1: Simple IIFE 
+
+(function() { 
+    let name = “kumar"; 
+    console.log("Hello " + name); 
+})(); 
+console.log(name); // ❌ Error: name is not defined 
+
+Output: 
+
+Hello kumar 
+
+name exists only inside the IIFE → not accessible globally. 
+
+Example 2: IIFE with Parameters 
+
+(function(a, b) { 
+    console.log(a + b); 
+})(5, 10); 
+ 
+
+Output: 
+
+15 
+
+can pass arguments to an IIFE just like a regular function. 
+
+Why We Use It (Main Reasons) 
+
+✅ (1) To create a private scope 
+
+Before let and const, everything declared with var leaked into the global scope. 
+ IIFE helped to create temporary private variables that don’t pollute global space. 
+
+Example (Old JavaScript days): 
+
+var counter = 10; // Global variable 
+ 
+(function() { 
+  var counter = 0; // private variable 
+  console.log("Inside IIFE:", counter); // 0 
+})(); 
+ 
+console.log("Outside:", counter); // 10 
+ 
+
+🔒 Here, counter inside IIFE doesn’t affect the global counter. 
+
+ 
+
+✅ (2) To execute code immediately 
+
+You don’t need to call the function separately — it runs as soon as JS interpreter reaches it. 
+
+Example: 
+
+(function() { 
+  console.log("Setup complete!"); // runs immediately 
+})(); 
+ 
+
+This is used for: 
+
+initialization code 
+
+configuration setup 
+
+running logic once when the app starts 
+
+ 

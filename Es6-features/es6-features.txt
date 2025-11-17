@@ -1,0 +1,466 @@
+ES6 Features 
+
+Destructuring (arrays, objects) 
+
+Spread/rest operator (...) 
+
+Template literals 
+
+Modules (import, export) 
+
+ 
+
+Destructuring (arrays, objects) 
+
+Destructuring allows you to unpack values from arrays or objects into individual variables — instead of accessing them one by one. 
+
+Why Destructuring is Useful: 
+
+1️⃣ Less code, more readable 
+
+Traditional way: 
+
+const person = { name: "Udhay", age: 25 }; 
+ 
+const name = person.name; 
+const age = person.age; 
+ 
+console.log(name, age); // Udhay 25 
+ 
+
+With destructuring: 
+
+const { name, age } = person; 
+ 
+console.log(name, age); // Udhay 25 
+ 
+
+✅ write less code and it’s easier to read. 
+
+ 
+
+2️⃣ Easier access to nested data 
+
+Suppose you have nested objects, like API responses: 
+
+const user = { 
+  id: 1, 
+  info: { 
+    city: "Chennai", 
+    zip: 600001 
+  } 
+}; 
+ 
+// Traditional 
+const city = user.info.city; 
+const zip = user.info.zip; 
+ 
+// Destructuring 
+const { info: { city: userCity, zip: userZip } } = user; 
+ 
+console.log(userCity, userZip); // Chennai 600001 
+ 
+
+ 
+
+3️⃣ Default values 
+
+Sometimes data might be missing in objects. Destructuring lets you provide defaults: 
+
+const person = { name: "Udhay" }; 
+ 
+// age is missing 
+const { name, age = 30 } = person; 
+ 
+console.log(name, age); // Udhay 30 
+ 
+
+✅ Without destructuring, have to write extra if statements to check for missing data. 
+
+ 
+
+4️⃣ Function parameters 
+
+You can destructure objects directly in function arguments, making code cleaner: 
+
+const person = { name: "Udhay", age: 25, city: "Chennai" }; 
+ 
+// Traditional 
+function printUser(person) { 
+  console.log(`${person.name}, ${person.age}, ${person.city}`); 
+} 
+printUser(person); 
+ 
+// With destructuring 
+function printUserDestructured({ name, age, city }) { 
+  console.log(`${name}, ${age}, ${city}`); 
+} 
+printUserDestructured(person); // Udhay, 25, Chennai 
+ 
+
+✅ This avoids repeatedly writing person.name, person.age inside the function. 
+
+ 
+
+ 
+
+Array Destructuring 
+
+Example: 
+
+const colors = ["red", "green", "blue"]; 
+
+  
+
+// Old way 
+
+const first = colors[0]; 
+
+const second = colors[1]; 
+
+console.log(first) 
+
+console.log(second) 
+
+  
+
+// ES6 way 
+
+const [firstColor, secondColor, thirdColor] = colors; 
+
+console.log(firstColor);  // red 
+
+console.log(secondColor); // green 
+
+Output: 
+
+red 
+green 
+red 
+green 
+
+ 
+
+ 
+
+Example: 
+
+Before: 
+
+const numbers = [10, 20, 30]; 
+const a = numbers[0]; 
+const b = numbers[1]; 
+const c = numbers[2]; 
+console.log(a, b, c); // 10 20 30 
+ 
+
+With destructuring: 
+
+const numbers = [10, 20, 30]; 
+const [a, b, c] = numbers; 
+console.log(a, b, c); // 10 20 30 
+
+ 
+
+ 
+
+skip values: 
+
+Example: 
+
+const [x, , z] = [1, 2, 3]; 
+console.log(x, z); // 1 3 
+
+ 
+
+Output: 
+
+1 3 
+
+ 
+
+use default values: 
+
+Example:  
+
+const [p, q = 5] = [10]; 
+console.log(p, q);  
+
+Output: 
+
+10 5 
+
+ 
+
+ 
+
+Example: 
+
+const [a = "default", b = "value"] = []; 
+
+console.log(a, b); // default value 
+
+ 
+
+Output: 
+
+default value 
+
+ 
+
+Object Destructuring 
+
+Before: 
+
+const person = { name: "Ram", age: 25 }; 
+const name = person.name; 
+const age = person.age; 
+console.log(name, age); // Ram 25 
+ 
+
+With destructuring: 
+
+const person = { name: "Ram", age: 25 }; 
+const { name, age } = person; 
+console.log(name, age); // Ram 25 
+
+ 
+
+rename variables: 
+
+const { name: fullName, age } = person; 
+console.log(fullName, age); // Ram 25 
+ 
+
+default values: 
+
+const { city = "Unknown" } = person; 
+console.log(city); // Unknown 
+
+ 
+
+2) Spread and Rest Operator (...) 
+
+Both use the same syntax (...), but meaning changes by where you use it. 
+
+Spread (expands values) 
+
+It spreads array or object elements into individual items. 
+
+Example (Array): 
+
+const arr1 = [1, 2]; 
+const arr2 = [3, 4]; 
+const result = [...arr1, ...arr2]; 
+console.log(result); // [1, 2, 3, 4] 
+ 
+
+Example (Object): 
+
+const user = { name: "Ram" }; 
+const info = { age: 25 }; 
+const merged = { ...user, ...info }; 
+console.log(merged); // { name: 'Ram', age: 25 } 
+ 
+
+Copy arrays (without affecting original): 
+
+const copy = [...arr1]; 
+
+ 
+
+Rest (collects values) 
+
+It collects remaining values into an array or object. 
+
+Example (Array): 
+
+const [a, ...rest] = [1, 2, 3, 4]; 
+console.log(a);    // 1 
+console.log(rest); // [2, 3, 4] 
+
+ 
+
+Output: 
+
+1 
+[ 2, 3, 4 ] 
+
+ 
+
+Used in function parameters or destructuring to gather remaining values. 
+
+function sum(...numbers) { 
+  console.log(numbers); // [1, 2, 3, 4] 
+  return numbers.reduce((a, b) => a + b); 
+} 
+ 
+console.log(sum(1, 2, 3, 4)); // 10 
+
+ 
+
+Output: 
+
+[ 1, 2, 3, 4 ] 
+10 
+
+ 
+ 
+
+🔹 Rest in destructuring: 
+
+const [first, ...rest] = [10, 20, 30, 40]; 
+console.log(first); // 10 
+console.log(rest);  // [20, 30, 40] 
+
+ 
+
+ 
+
+ 
+
+Template Literals (Backticks ``) 
+
+ 
+
+Used for string interpolation (inserting variables easily) and multi-line strings. 
+
+ 
+
+ 
+
+Before (old way): 
+
+const name = "Ram"; 
+const msg = "Hello " + name + ", welcome!"; 
+console.log(msg); 
+
+ 
+
+Output: 
+
+Hello Ram, Welcome 
+
+ 
+ 
+
+using template literals: 
+
+const name = "Ram"; 
+const msg = `Hello ${name}, welcome!`; 
+console.log(msg); 
+
+Output: 
+
+Hello Ram, Welcome 
+
+ 
+ 
+
+Supports multiple lines: 
+
+Multiline strings 
+
+Before ES6: 
+
+const text = "Line 1\nLine 2\nLine 3"; 
+ 
+
+With template literals: 
+
+const text = ` 
+
+This is line 1 
+
+This is line 2 
+
+`; 
+
+console.log(text); 
+
+ 
+
+Embed expressions 
+
+const a = 5; 
+const b = 10; 
+console.log(`Sum is ${a + b}`); // Sum is 15 
+ 
+
+✅ You can compute values directly inside the string. 
+
+ 
+
+4) Modules (import / export) 
+
+Used to split code into separate files and reuse them. 
+
+1️⃣ Named Exports (Recommended for multiple functions) 
+
+// math.js 
+export const add = (a, b) => a + b; 
+export const sub = (a, b) => a - b; 
+ 
+
+Each function is exported individually. 
+
+Then in another file, you can import like: 
+
+// app.js 
+import { add, sub } from './math.js'; 
+ 
+console.log(add(2, 3)); // 5 
+console.log(sub(5, 2)); // 3 
+ 
+
+ 
+
+2️⃣ Export all at once (Named Export) 
+
+// math.js 
+const add = (a, b) => a + b; 
+const sub = (a, b) => a - b; 
+ 
+export { add, sub }; 
+ 
+
+✅ Works the same as above. 
+
+ 
+
+3️⃣ Default Export (Optional, usually for one main thing) 
+
+// math.js 
+const math = { 
+  add: (a, b) => a + b, 
+  sub: (a, b) => a - b, 
+}; 
+ 
+export default math; 
+ 
+
+Then import like: 
+
+import math from './math.js'; 
+ 
+console.log(math.add(2, 3)); // 5 
+console.log(math.sub(5, 2)); // 3 
+ 
+
+ 
+
+🔹 Key Notes: 
+
+Named export → multiple exports, use {} while importing. 
+
+Default export → only one per file, no {} needed while importing. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 

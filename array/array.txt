@@ -1,0 +1,1352 @@
+                
+
+ARRAYS 
+
+ 
+
+An Array is an object type designed for storing data collections. 
+
+Key characteristics of JavaScript arrays are: 
+
+Elements: An array is a list of values, known as elements. 
+
+Ordered: Array elements are ordered based on their index. 
+
+Zero indexed: The first element is at index 0, the second at index 1, and so on. 
+
+Dynamic size: Arrays can grow or shrink as elements are added or removed. 
+
+Heterogeneous: Arrays can store elements of different data types (numbers, strings, objects and other arrays). 
+
+Arrays are Objects 
+
+Arrays are a special type of objects. The typeof operator in JavaScript returns "object" for arrays. 
+
+But, JavaScript arrays are best described as arrays. 
+
+Arrays use numbers to access its "elements". In this example, person[0] returns John: 
+
+const person = ["John", "Doe", 46]; 
+
+Objects use names to access its "members". In this example, person.firstName returns John: 
+
+const person = {firstName:"John", lastName:"Doe", age:46}; 
+
+ 
+
+The Difference Between Arrays and Objects 
+
+In JavaScript, arrays use numbered indexes.   
+
+In JavaScript, objects use named indexes. 
+
+ 
+
+When to Use Arrays. When to use Objects. 
+
+JavaScript does not support associative arrays. 
+
+You should use objects when you want the element names to be strings (text). 
+
+You should use arrays when you want the element names to be numbers. 
+
+ 
+
+Difference between array[] and new Array() 
+
+When creating array with new keyword: 
+
+If only give 1 value for array in new keyword it create length for the array 
+
+const points = new Array(40); 
+
+console.log(points.length);   // 40 
+
+console.log(points);          // [ <40 empty items> ] 
+
+If give multiple element it add as element only not consider as length 
+
+const points = new Array(40, 100, 1, 5, 25, 10); ---> it create array with 6 element 
+
+If array created by using [] square breacket without new key word it add this only as element not consider as length 
+
+const points = [40, 100, 1, 5, 25, 10]; ---> it also create array with 6 element 
+
+ 
+
+When creating array with new keyword: 
+
+If only give 1 value for array in new keyword it create length for the array 
+
+const points = new Array(40); 
+
+console.log(points.length);   // 40 
+
+console.log(points);          // [ <40 empty items> ] 
+
+Using array=[] (array literal) 
+
+let arr1 = [];          // creates an empty array 
+
+let arr2 = [1, 2, 3];   // creates an array with values 
+
+Using array()  (array constructor) 
+
+let arr3 = new Array();        // empty array [] 
+
+let arr4 = new Array(3);       // array with length 3 but empty slots [empty × 3] 
+
+let arr5 = new Array(1, 2, 3); // [1, 2, 3] 
+
+it creates an array with 3 empty slots, not [3]. 
+
+Array Methods 
+
+Basic Array Methods 
+
+Array length 
+Array toString() 
+Array at() 
+Array join() 
+Array pop() 
+Array push() 
+Array shift() 
+Array unshift() 
+ 
+
+Array delete() 
+Array concat() 
+Array slice() 
+Array splice() 
+
+ 
+
+Push() --> add element at end of the array 
+
+Eg:  
+
+array=[1,2,3] 
+
+console.log(array) 
+
+console.log(array.push(4)) 
+
+console.log(array) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3 ] 
+4 
+[ 1, 2, 3, 4 ] 
+
+ 
+
+Pop() --> remove element at end of the array 
+
+Example 
+
+array=[1,2,3] 
+
+console.log(array) 
+
+console.log(array.pop()) 
+
+console.log(array) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3 ] 
+3 
+[ 1, 2 ] 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Shift() --> remove first element from array 
+
+Eg:  
+
+array=[1,2,3,4,5] 
+
+console.log(array) 
+
+console.log(array.shift()) 
+
+console.log(array) 
+
+ 
+
+Output: 
+
+Output: 
+
+[ 1, 2, 3, 4, 5 ] 
+1 
+[ 2, 3, 4, 5 ] 
+
+ 
+
+Unshift() ---> add first element to the array 
+
+Eg: 
+
+array=[1,2,3,4,5] 
+
+console.log(array) 
+
+console.log(array.unshift(0)) 
+
+console.log(array) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3, 4, 5 ] 
+6 
+[ 0, 1, 2, 3, 4, 5 ] 
+
+ 
+
+Delete() --> delete given element position in array 
+
+Drawback --> delete deletes the given position of the array it not shift the available value so deleted postion set as undefined 
+
+ 
+
+Eg: 
+
+array=[1,2,3,4,5] 
+
+console.log(array) 
+
+console.log(delete array[0]) 
+
+console.log(array) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3, 4, 5 ] 
+true 
+[ <1 empty item>, 2, 3, 4, 5 ] 
+
+ 
+
+Splice() ---> add/remove/replace element without save as undefined replace for delete method 
+
+Syntax for delete --> arrayname.splice(start position, delete count) 
+
+Syntax for add ---> arrayname.splicae(start position,count, delete count(for add 0), adding element) 
+
+Syntax for replace --> arrayname.splice(start positon,delete count, replacing value) 
+
+ 
+
+Example for add: 
+
+array=[1,2,3,4,5] 
+
+console.log(array) 
+
+console.log(array.splice(5,0,6)) 
+
+console.log(array) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3, 4, 5 ] 
+[] 
+[ 1, 2, 3, 4, 5, 6 ] 
+ 
+
+Example for delete: 
+
+array=[1,2,3,4,5,6] 
+
+console.log(array) 
+
+console.log(array.splice(5,1)) 
+
+console.log(array) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3, 4, 5, 6 ] 
+[ 6 ] 
+[ 1, 2, 3, 4, 5 ] 
+
+ 
+
+Example for replace: 
+
+array=[1,2,3,4,8,9] 
+
+console.log(array) 
+
+console.log(array.splice(4,2,5,6)) 
+
+console.log(array) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3, 4, 8, 9 ] 
+[ 8, 9 ] 
+[ 1, 2, 3, 4, 5, 6 ] 
+
+Splice() --> get specified position values 
+
+Syntax --> arrayname.slice(starting index, last index) list index not include display value before last index value 
+
+ 
+
+Eg: 
+
+array=[1,2,3,4,8,9] 
+
+console.log(array) 
+
+console.log(array.slice(2,3)) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3, 4, 8, 9 ] 
+[ 3 ]   here i have include last index but it taken only before last index 
+
+ 
+
+ 
+
+Reverse() ----> it reverse all array element 
+
+Eg: 
+
+array=[1,2,3,4,8,9] 
+
+console.log(array) 
+
+console.log(array.reverse()) 
+
+ 
+
+Output: 
+
+[ 1, 2, 3, 4, 8, 9 ] 
+[ 9, 8, 4, 3, 2, 1 ] 
+
+ 
+
+Join() ---->  convert array to string  
+
+Converts the array into a string, but you can specify a custom separator. 
+
+Default separator is also a comma ,, but you can make it anything. 
+
+Eg: 
+
+let arr = [1, 2, 3, 4]; 
+
+  
+
+console.log(arr.join());       
+
+Output: // "1,2,3,4"   (same as toString) 
+
+  
+
+console.log(arr.join(" - "));  
+
+Output: // "1 - 2 - 3 - 4" 
+
+  
+
+console.log(arr.join(""));     
+
+Output: // "1234"  (no separator) 
+
+ 
+
+  
+
+ 
+
+Eg: 
+
+array=['a','b','c','d'] 
+
+console.log(array) 
+
+let str = array.join() 
+
+console.log(str) 
+
+ 
+
+Output: 
+
+[ 'a', 'b', 'c', 'd' ] 
+converted to string  a,b,c,d 
+
+ 
+
+ToString(): 
+
+Converts the array into a string with elements separated by a comma , by default. 
+
+You cannot change the separator. 
+
+let arr = [1, 2, 3, 4]; 
+
+console.log(arr.toString());  
+
+Out put: // "1,2,3,4" 
+
+Split (): ----> convert string to array 
+
+ 
+
+Eg: 
+
+let str = "a,b,c,d" 
+
+console.log(str) 
+
+console.log(str.split()) 
+
+ 
+
+Output: 
+
+a,b,c,d 
+[ 'a,b,c,d' ] 
+
+ 
+
+ Concat() ---> Join multiple array 
+
+ 
+
+firstarr=[1,2,3] 
+
+secondarr=[4,5,6] 
+
+  
+
+//normal array join 
+
+let joinnedarr= [firstarr,secondarr] 
+
+console.log("Normal join:", joinnedarr) 
+
+  
+
+//using concat 
+
+joinnedarr = firstarr.concat(secondarr) 
+
+console.log("Concat join:", joinnedarr) 
+
+ 
+
+Output: 
+
+Normal join: [ [ 1, 2, 3 ], [ 4, 5, 6 ]---> normal join add  as 2 array in single array 
+Concat join: [ 1, 2, 3, 4, 5, 6 ]  --> concat join 2 array as single array 
+
+ 
+
+ 
+
+ Spread operator  (syntax ...)  help to join array without using concat 
+
+Eg: 
+
+ 
+
+firstarr=[1,2,3] 
+
+secondarr=[4,5,6] 
+
+ 
+
+//using spread operator 
+
+joinnedarr = [...firstarr,...secondarr] 
+
+console.log("using spread operator:",joinnedarr) 
+
+ 
+
+Output: 
+
+using spread operator: [ 1, 2, 3, 4, 5, 6 ] 
+
+Sort  --> used to sort array 
+
+Eg: 
+
+array=[2,4,3,0,6,1,8] 
+
+console.log(array.sort()) 
+
+ 
+
+Output: 
+
+[ 
+  0, 1, 2, 3, 
+  4, 6, 8 
+] 
+
+ 
+
+14)  at() ---> return index element from array 
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"]; 
+let fruit = fruits.at(2); 
+
+Output: 
+
+Apple 
+
+ 
+
+ 
+ 
+
+Looping array elements: 
+
+Using for loop 
+
+Eg: 
+
+array=['apple','banana','grapes'] 
+
+for(let i=0 ; i<array.length; i++){ 
+
+  console.log(array[i]) 
+
+} 
+
+Output: 
+
+apple 
+banana 
+grapes 
+
+ 
+
+Using forEach 
+
+ 
+
+let fruits =['apple','banana','grapes','mango'] 
+
+  
+
+//using function 
+
+fruits.forEach(function(fruit){ 
+
+  console.log(fruit) 
+
+   
+
+}) 
+
+//using arrow function 
+
+fruits.forEach((fruit) => console.log(fruit)) 
+
+ 
+
+ 
+Output: 
+
+apple 
+banana 
+grapes 
+mango 
+apple 
+banana 
+grapes 
+mango 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Array Search 
+
+indexOf() 
+
+The indexOf() method searches an array for an element value and returns its position. 
+
+Count postion from start  
+
+Code: 
+
+cars=['honda','maruthi','bmw','benz','audi'] 
+
+console.log(cars.indexOf("bmw")) 
+
+Output: 
+
+2 
+
+ 
+
+LastIndexOf() 
+
+Array.lastIndexOf() is the same as Array.indexOf(), but returns the position of the last occurrence of the specified element. 
+
+ 
+
+Count position form last 
+
+ 
+
+Code: 
+
+cars=['honda','maruthi','bmw','benz','audi'] 
+
+console.log(cars.lastIndexOf('bmw')+1) 
+
+ 
+
+Output: 
+
+3 
+
+ 
+
+ 
+
+Includes() 
+
+ 
+
+This allows us to check if an element is present in an array 
+
+ 
+
+Code: 
+
+cars=['honda','maruthi','bmw','benz','audi'] 
+
+console.log(cars.includes('bmw')) 
+
+Output: 
+
+true 
+
+ 
+
+ 
+
+Find() 
+
+The find() method returns the value of the first array element that passes a test function. 
+
+ 
+
+Note that the function takes 3 arguments: 
+
+The item value 
+
+The item index 
+
+The array itself 
+
+ 
+
+ 
+
+Code: 
+
+let number=[2,6,12,23,45] 
+
+let found=number.find(num => num>10) 
+
+console.log(found) 
+
+ 
+
+Output: 
+
+12 
+
+ 
+
+ 
+
+FindIndex() 
+
+Returns the index of the first element that matches a condition. 
+
+Returns -1 if not found. 
+
+Code: 
+
+let number=[2,6,12,23,45] 
+
+let index=number.findIndex(num => num>10) 
+
+console.log(index) 
+
+ 
+
+Output: 
+
+2 
+
+ 
+
+FindLast()  
+
+findLast() method that will start from the end of an array and return the value of the first element that satisfies a condition. 
+
+ 
+
+Code: 
+
+ 
+
+let number=[2,6,12,23,45] 
+
+let num=number.findLast(num => num>10) 
+
+console.log(num) 
+
+Output: 
+
+45 
+
+FindLastIndex()  
+
+The findLastIndex() method finds the index of the last element that satisfies a condition. 
+
+Code: 
+
+let number=[2,6,12,23,45] 
+
+let num=number.findLastIndex(num => num>10) 
+
+console.log(num) 
+
+Output: 
+
+4 
+
+ 
+
+ 
+
+ 
+
+filter() 
+
+Returns all elements that match a condition (as a new array). 
+
+Code: 
+
+let number=[2,6,12,23,45] 
+
+let num=number.filter(num => num>10) 
+
+console.log(num) 
+
+Output: 
+
+[ 12, 23, 45 ] 
+
+ 
+
+Array sort 
+
+ 
+
+Alphabetic Sort 
+
+Array sort() 
+Array reverse() 
+Array toSorted() 
+Array toReversed() 
+Sorting Objects 
+ 
+
+Numeric Sort 
+
+Numeric Sort 
+Random Sort 
+Math.min() 
+Math.max() 
+Home made Min() 
+Home made Max() 
+
+Numeric sort: 
+
+By default, the sort() function sorts values as strings. 
+
+This works well for strings ("Apple" comes before "Banana"). 
+
+If numbers are sorted as strings, "25" is bigger than "100", because "2" is bigger than "1". 
+
+Because of this, the sort() method will produce incorrect result when sorting numbers. 
+
+ 
+
+Sorting an Array 
+
+ 
+
+The sort() method sorts an array order: 
+
+ 
+
+Numeric sort : 
+
+ 
+
+Code: 
+
+let number=[2,6,12,23,45,1,7,3] 
+
+console.log(number.sort((a,b)=> a-b)) //accending order 
+
+console.log(number.sort((a,b)=> b-a)) //decending oreder 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Output: 
+
+[ 
+  1,  2,  3,  6, 
+  7, 12, 23, 45 
+] 
+[ 
+  45, 23, 12, 7, 
+   6,  3,  2, 1 
+] 
+
+ 
+
+ 
+
+Random sort 
+
+shuffle an array using sort() with a random comparator. 
+
+Code: 
+
+let number=[2,6,12,23,45,1,7,3] 
+
+console.log(number.sort(()=> Math.random() -0.5 )) 
+
+Output: 
+
+[ 
+  23, 7, 12, 45, 
+   6, 1,  3,  2 
+] 
+
+ 
+
+Math.min() and Math.max() 
+
+Finds the smallest and largest number in a set of values.  
+
+ 
+
+This is only for given numbers not for array 
+
+ 
+
+Code: 
+
+ 
+
+console.log(Math.min(29,5,1)) //minimum value 
+
+console.log(Math.max(23,454,222))//maximum value 
+
+ 
+
+ 
+
+Output: 
+
+1 
+454 
+
+ 
+
+This method for find min and max in array by using spread operator 
+
+Code: 
+
+ 
+
+let number=[2,6,12,23,45,1,7,3] 
+
+console.log(Math.min(...number)) //minimum value 
+
+console.log(Math.max(...number)) //maximum value 
+
+Output: 
+
+1 
+45 
+
+Home-made Min() 
+
+Find minimum value without using built in methods  
+
+ 
+
+Code: 
+
+let number=[2,6,12,23,45,1,7,3] 
+
+let min = number[0] 
+
+for(i=0;i<number.length; i++){ 
+
+  if (number[i] < min){ 
+
+    min=number[i] 
+
+  } 
+
+} 
+
+  
+
+console.log(min) 
+
+Output: 
+
+1 
+
+ 
+
+Home-made Max() 
+
+Find maximum value without using build in method (Math) 
+
+ 
+
+Code: 
+
+let number=[2,6,12,23,45,1,7,3] 
+
+let max = number[0] 
+
+for(i=0;i<number.length;i++){ 
+
+  if(number[i]>max){ 
+
+    max=number[i] 
+
+  } 
+
+} 
+
+console.log(max) 
+
+ 
+
+Output: 
+
+45 
+
+ 
+
+Home made min max using .reduce() method 
+
+Code: 
+
+let number=[2,6,12,23,45,1,7,3] 
+
+let min= number.reduce((a,b)=> a<b?a:b) 
+
+console.log(min) 
+
+let max = number.reduce((a,b)=> a>b?a:b) 
+
+console.log(max) 
+
+ 
+
+Output: 
+
+1 
+45 
+
+ 
+
+Alphabetic Sort 
+
+Sort() -- sort array alphabatically 
+
+Code: 
+
+array=['cup','monitor','keyboard','laptop'] 
+
+console.log(array.sort()) 
+
+Output: 
+
+[ 'cup', 'keyboard', 'laptop', 'monitor' ] 
+
+ 
+
+Reverse() -- reverse array  
+
+Code: 
+
+array=['cup','monitor','keyboard','laptop'] 
+
+console.log(array.reverse()) 
+
+ 
+
+Output: 
+
+[ 'laptop', 'keyboard', 'monitor', 'cup' ] 
+
+ 
+
+ 
+
+ToSortd(): 
+
+toSorted() method as a safe way to sort an array without altering the original array. 
+
+The difference between toSorted() and sort() is that the toSorted() method creates a new array, keeping the original array unchanged, while the sort() method alters the original array. 
+
+Code: 
+
+array=['cup','monitor','keyboard','laptop'] 
+
+console.log(array) 
+
+sorted= array.toSorted() 
+
+console.log(sorted) 
+
+Output: 
+
+[ 'cup', 'monitor', 'keyboard', 'laptop' ] 
+[ 'cup', 'keyboard', 'laptop', 'monitor' ] 
+
+ToReversed() 
+
+toReversed() method as a safe way to reverse an array without altering the original array. 
+
+The difference between toReversed() and reverse() is that the toReversed() method creates a new array, keeping the original array unchanged, while the reverse() method alters the original array. 
+
+Code: 
+
+array=['cup','monitor','keyboard','laptop'] 
+
+console.log(array) 
+
+reverse= array.toReversed() 
+
+console.log(reverse) 
+
+Output: 
+
+[ 'cup', 'monitor', 'keyboard', 'laptop' ] 
+[ 'laptop', 'keyboard', 'monitor', 'cup' ] 
+
+ 
+
+Array Iteration Methods 
+
+ForEach() 
+
+ 
+
+Executes a function once for each element in the array. 
+
+Does not return a new array (always returns undefined). 
+
+Syntax: 
+
+array.forEach(function(currentValue(hold current values), index(hold index), array(hold full array)) {  // here currentValue, index, array are default position it not changed 
+
+  // code to execute for each element 
+
+}); 
+
+ 
+
+Code: 
+
+number=[1,2,3,4,5,6] 
+
+number.forEach((num)=>{ 
+
+  console.log(num) 
+
+}) 
+
+ 
+
+Output: 
+
+1 
+2 
+3 
+4 
+5 
+6 
+
+ 
+
+ForEach(): que:   Use forEach() to print each price with " Rs" at the end. 
+
+ 
+
+Code: 
+
+let prices =[100, 200, 300, 400]; 
+
+prices.forEach((price)=>{ 
+
+  console.log(price,'Rs') 
+
+}) 
+
+Output: 
+
+100 Rs 
+200 Rs 
+300 Rs 
+400 Rs 
+
+ 
+
+Reduce method 
+
+Combines all items into one value (sum, average, etc.). 
+
+The reduce() method runs a function on each array element to produce a single value. 
+
+The reduce() method works from left-to-right in the array. 
+
+Note 
+
+The reduce() method does not reduce the original array. 
+
+array.reduce(callbackFunction, initialValue); 
+
+callbackFunction parameters: 
+
+accumulator: The value returned from the previous callback invocation, or initialValue if provided. 
+
+currentValue: The current element being processed in the array. 
+
+currentIndex: (optional): The index of the current element. 
+
+array: (optional): The array reduce() was called upon. 
+
+initialValue (optional): 
+
+If provided, it sets the initial value of the accumulator and the reduce method starts processing from the first element. 
+
+If not provided, the accumulator starts with the first element, and reduce begins processing from the second element. 
+
+ 
+
+Que: Use reduce() to find the total sum of prices. 
+
+a alone → only keeps previous value. 
+
+b alone → only knows the current element, cannot accumulate total. 
+
+reduce() combines them to compute a cumulative result. 
+
+Code: 
+
+let prices =[100, 200, 300, 400]; 
+
+console.log(prices.reduce((a,b)=>a+b)) 
+
+Output: 
+
+1000 
+
+ReduceRight():  --> Combine Right → Left 
+
+ 
+
+Same as reduce, but goes backwards. 
+
+The reduceRight() method runs a function on each array element to produce a single value. 
+
+The reduceRight() works from right-to-left in the array. 
+
+ 
+
+Code: 
+
+let alp=['a','b','c'] 
+
+console.log(alp.reduceRight((a,b)=>a+b)) 
+
+Output: 
+
+cba 
+
+Filter() 
+
+Rule: 
+
+() => expression → expression is auto-returned 
+
+() => { statement } → you must use return 
+
+ 
+
+The filter() method creates a new array with array elements that pass a test. 
+
+ 
+
+Code: 
+
+let number=[2,6,12,23,45] 
+
+let num=number.filter(num => num>10) 
+
+console.log(num) 
+
+// even 
+
+let even = number.filter((num) =>{ 
+
+  return num % 2 == 0 
+
+}) 
+
+console.log(even) 
+
+ 
+
+Output: 
+
+[ 12, 23, 45 ] 
+[ 2, 6, 12 ] 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Map() -- Transform 
+
+The map() method creates a new array by performing a function on each array element. 
+
+The map() method does not execute the function for array elements without values. 
+
+The map() method does not change the original array. 
+
+Makes a new array by changing each item. 
+
+always returns an array of results 
+
+Result should be inside of the array  
+
+ 
+
+Code: 
+
+let number=[2,6,12,23,45] 
+
+let num=number.map((num) =>{ 
+
+  return num*2 
+
+}) 
+
+console.log(num) 
+
+ 
+
+Output: 
+
+[ 4, 12, 24, 46, 90 ] 
+
+FlatMap() Transform + Flatten 
+
+The flatMap() method first maps all elements of an array and then creates a new array by flattening the array. 
+
+ 
+
+FlatMap() does not add result as nested array 
+
+FlatMap() use to split strings 
+
+ 
+
+Code: 
+
+let fruit = ["apple"] 
+
+console.log(fruit) 
+
+let splits = fruit.flatMap((fruits)=>{ 
+
+  return fruits.split("") 
+
+}) 
+
+console.log(splits) 
+
+Output: 
+
+[ 'apple' ] 
+[ 'a', 'p', 'p', 'l', 'e' ] 

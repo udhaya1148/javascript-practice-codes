@@ -1,0 +1,259 @@
+08/10/25 
+
+Practice Questions with Answers 
+
+ 
+
+Variables & Constants 
+
+What is the difference between var, let, and const in terms of scope and re-declaration? 
+
+Ans: 
+
+var,let,const are used to declare variable var can be redeclare and reassign with in function scope let can be reassign and cannot be redeclare in block scope and const cannot be re assign and re declare 
+
+ 
+
+Can you reassign a const variable if it’s an object or array? 
+
+Ans: 
+
+cannot be reassign const after declared but in object and arrays we can updated values 
+
+ 
+
+🔹 Data Types 
+
+What are the 6 primitive data types in JavaScript? 
+
+Ans: 
+
+string, number, boolean, null, undefined, symbol 
+
+ 
+
+What will this output be? 
+
+console.log(typeof null); 
+console.log(typeof []); 
+
+ 
+
+Ans:  
+
+Object 
+
+Object 
+
+ 
+
+🔹 Objects & Arrays 
+
+How do you add a new property age to this object? 
+
+let person = { name: "Alex" }; 
+
+ 
+
+Ans: 
+
+person.age=32 
+ 
+
+What’s the difference between for...in and for...of when used with arrays? 
+
+ 
+
+Ans: 
+
+For...in used to iterate index in array for...of used to iterate values in array 
+
+ 
+
+🔹 Operators 
+
+What’s the difference between == and ===? Give an example. 
+
+ 
+
+Ans: 
+
+== compares two value and === compares value and type 
+
+ 
+
+What will this output? 
+
+let x = 5; 
+	console.log(x += 2 * 3); 
+
+ 
+
+Ans: 
+
+11 
+ 
+
+🔹 Strings 
+
+How do you join these two strings with a space? 
+
+let a = "Hello"; 
+let b = "World"; 
+
+ 
+
+Ans: 
+
+console.log(a+' '+b) 
+ 
+
+What will this output? 
+
+let name = "kumar"; 
+console.log(`Hello ${name.toUpperCase()}`); 
+
+ 
+
+Ans: 
+
+Hello KUMAR 
+ 
+
+🔹 Numbers 
+
+How do you generate a random number between 1 and 10? 
+
+ 
+
+Ans: 
+
+console.log(Math.floor(Math.random() * 10) + 1); 
+
+ 
+
+What will this output? 
+
+console.log(Math.max(10, 20, "30")); 
+
+ 
+
+Ans: 
+
+30 
+
+🔹 Type Conversion 
+
+What’s the difference between explicit and implicit type conversion? 
+
+ 
+
+Ans: 
+
+explicit is a manual type conversion user can change type when they need and implicit is a automatic type conversation it was decide by javascript at time of compile 
+
+ 
+
+What will this output? 
+
+console.log("5" - 2); 
+console.log("5" + 2); 
+ 
+
+Ans: 
+
+3  
+
+52 
+
+🔹 Control Flow 
+
+Write a small code snippet to check if a number is positive, negative, or zero using if...else if...else. 
+
+ 
+
+Ans: 
+
+num = -1 
+
+if(num == 0){ 
+
+  console.log('zero') 
+
+   
+
+} 
+
+else if(num > 0){ 
+
+  console.log('positive') 
+
+} 
+
+else if(num < 0){ 
+
+  console.log('negative') 
+
+} 
+
+else{ 
+
+  console.log('not a number') 
+
+} 
+
+ 
+
+What’s the difference between for...of and for...in in loop control? 
+
+ 
+
+Ans: 
+
+For...of iterates values and for...in iterates index 
+
+ 
+
+Write a switch statement to check if today is "Monday" or "Friday", otherwise print "Other day". 
+
+ 
+
+Ans: 
+
+ 
+
+const today = new Date().getDay() 
+
+ 
+
+switch(today){ 
+
+case 1: 
+
+console.log("MOnday"); 
+
+break; 
+
+ 
+
+case 5: 
+
+console.log("Friday"); 
+
+break; 
+
+ 
+
+default: 
+
+console.log("Other day"); 
+
+break; 
+
+ 
+
+} 
+
+ 
+
+ 

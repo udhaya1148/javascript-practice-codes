@@ -1,0 +1,392 @@
+Java Script Call back: 
+
+A callback in JavaScript is a function that is passed as an argument to another function, and it is intended to be called (executed) later, usually after some operation is completed. Callbacks are commonly used to handle asynchronous operations like reading a file, making an API request, or waiting for a timer. 
+
+Key Points: 
+
+Function as a parameter: In JavaScript, functions can be passed around like variables. 
+
+Executed later: The function passed in as a callback is invoked inside another function when needed. 
+
+Used for async and sync tasks: Although mostly seen with asynchronous operations, callbacks can also be used in synchronous code. 
+
+Example 1: Synchronous Callback 
+
+function greet(name, callback) { 
+    console.log("Hello, " + name); 
+    callback(); 
+} 
+ 
+function sayGoodbye() { 
+    console.log("Goodbye!"); 
+} 
+ 
+greet("Alice", sayGoodbye); 
+ 
+
+Output: 
+
+Hello, Alice 
+Goodbye! 
+ 
+
+Here, sayGoodbye is the callback function passed to greet. 
+
+ 
+
+Example 2: Asynchronous Callback 
+
+function fetchData(callback) { 
+    setTimeout(() => { 
+        console.log("Data fetched!"); 
+        callback(); 
+    }, 2000); 
+} 
+ 
+function processData() { 
+    console.log("Processing data..."); 
+} 
+ 
+fetchData(processData); 
+ 
+
+Output (after 2 seconds): 
+
+Data fetched! 
+Processing data... 
+ 
+
+Here, processData is called after fetchData completes its asynchronous operation. 
+
+What is an Error-First Callback? 
+
+In Node.js and JavaScript, an Error-First Callback is a convention where the first argument of a callback is reserved for an error, and the second (or subsequent) arguments are for the successful result. 
+
+Why? 
+ Because JavaScript functions often run asynchronously (like reading files, fetching data, or doing timers), you need a standard way to handle errors and results. 
+
+Syntax: 
+
+function callback(err, result) { 
+  if (err) { 
+    // handle error 
+  } else { 
+    // use result 
+  } 
+} 
+ 
+
+2. Example: Error-First Callback 
+
+ 
+
+function divide(a,b,callback){ 
+
+if(b === 0){ 
+
+callback('Cannot divide by zero',null); 
+
+} 
+
+else{ 
+
+callback(null,a/b) 
+
+} 
+
+} 
+
+ 
+
+divide(10,0,(err,result)=>{ 
+
+if(err){ 
+
+console.log(err); 
+
+} 
+
+else{ 
+
+console.log(result); 
+
+} 
+
+}) 
+
+ 
+
+Output: 
+
+Cannot divide by zero 
+
+Explanation: 
+
+First argument of callback is always for errors. 
+
+If there’s no error, we pass null as the first argument. 
+
+Result comes as the second argument. 
+
+ 
+
+3. Advantages 
+
+Standard way to handle async operations. 
+
+Easy to chain multiple async functions. 
+
+Avoids crashes by gracefully handling errors. 
+
+ 
+
+4. Handling Invalid Input 
+
+Error-first callbacks make it easy to handle invalid input like: 
+
+Wrong data type (a or b not a number) 
+
+Invalid values (like division by zero) 
+
+Failed async operations (like network request fails) 
+
+ 
+
+✅ Key Rule: Always check errors first in the callback: 
+
+if (err) { 
+  // handle error and exit 
+} else { 
+  // process result 
+} 
+ 
+
+ 
+
+Callback Hell: 
+
+“Callback Hell” is a term in JavaScript used to describe a situation where you have multiple nested callbacks, making your code hard to read, maintain, and debug. It usually happens in asynchronous programming when one asynchronous operation depends on the result of another. 
+
+Why it happens 
+
+JavaScript is asynchronous. When you perform operations like reading files, fetching data from an API, or using timers, you often pass a callback function to handle the result after the operation completes. 
+
+If you need to perform multiple asynchronous operations in sequence, you might end up nesting callbacks inside callbacks. 
+
+Example of Callback Hell 
+
+// Simulate asynchronous operations using setTimeout 
+
+  
+
+function doSomething(callback) { 
+
+  setTimeout(() => { 
+
+    console.log("Step 1: Doing something..."); 
+
+    callback("Result of Step 1"); 
+
+  }, 1000); 
+
+} 
+
+  
+
+function doSomethingElse(result1, callback) { 
+
+  setTimeout(() => { 
+
+    console.log("Step 2: Doing something else with:", result1); 
+
+    callback("Result of Step 2"); 
+
+  }, 1000); 
+
+} 
+
+  
+
+function doAnotherThing(result2, callback) { 
+
+  setTimeout(() => { 
+
+    console.log("Step 3: Doing another thing with:", result2); 
+
+    callback("Result of Step 3"); 
+
+  }, 1000); 
+
+} 
+
+  
+
+function doFinalThing(result3, callback) { 
+
+  setTimeout(() => { 
+
+    console.log("Step 4: Doing final thing with:", result3); 
+
+    callback("Result of Step 4"); 
+
+  }, 1000); 
+
+} 
+
+  
+
+// --------------------------- 
+
+// ❗ Callback Hell Starts Here 
+
+// --------------------------- 
+
+  
+
+doSomething(function(result1) { 
+
+  doSomethingElse(result1, function(result2) { 
+
+    doAnotherThing(result2, function(result3) { 
+
+      doFinalThing(result3, function(result4) { 
+
+        console.log("✅ All done:", result4); 
+
+      }); 
+
+    }); 
+
+  }); 
+
+}); 
+
+How this runs (Step-by-Step): 
+
+doSomething() starts → after 1 second logs 
+ → Step 1: Doing something... 
+
+Then calls doSomethingElse() → logs 
+ → Step 2: Doing something else with: Result of Step 1 
+
+Then calls doAnotherThing() → logs 
+ → Step 3: Doing another thing with: Result of Step 2 
+
+Then calls doFinalThing() → logs 
+ → Step 4: Doing final thing with: Result of Step 3 
+
+Finally prints 
+ → ✅ All done: Result of Step 4 
+
+ 
+
+⚠️ This is “Callback Hell” 
+
+Notice how the code keeps nesting deeper — each callback is inside another. 
+ This pattern becomes hard to read and maintain as your code grows. 
+
+Problems caused by Callback Hell 
+
+Readability: Code is nested deeply and visually messy. 
+
+Error handling: You need to handle errors at every nested level. 
+
+Maintenance: Adding or removing steps becomes tricky. 
+
+ Solutions 
+
+Named functions: Move nested callbacks into separate named functions. 
+
+function doSomething(callback) { 
+
+  setTimeout(() => { 
+
+    console.log("Step 1: Doing something..."); 
+
+    callback("Result of Step 1"); 
+
+  }, 1000); 
+
+} 
+
+  
+
+function doSomethingElse(result1, callback) { 
+
+  setTimeout(() => { 
+
+    console.log("Step 2: Doing something else with:", result1); 
+
+    callback("Result of Step 2"); 
+
+  }, 1000); 
+
+} 
+
+  
+
+function doAnotherThing(result2, callback) { 
+
+  setTimeout(() => { 
+
+    console.log("Step 3: Doing another thing with:", result2); 
+
+    callback("Result of Step 3"); 
+
+  }, 1000); 
+
+} 
+
+  
+
+function doFinalThing(result3, callback) { 
+
+  setTimeout(() => { 
+
+    console.log("Step 4: Doing final thing with:", result3); 
+
+    callback("Result of Step 4"); 
+
+  }, 1000); 
+
+} 
+
+  
+
+// ---- Named callback functions ---- 
+
+  
+
+function finalStep(result4) { 
+
+  console.log("✅ All done:", result4); 
+
+} 
+
+  
+
+function step3(result3) { 
+
+  doFinalThing(result3, finalStep); 
+
+} 
+
+  
+
+function step2(result2) { 
+
+  doAnotherThing(result2, step3); 
+
+} 
+
+  
+
+// Start the chain 
+
+doSomething(function (result1) { 
+
+  doSomethingElse(result1, step2); 
+
+}); 
+
+ 

@@ -1,0 +1,195 @@
+Error Handling 
+
+When your code runs, sometimes things go wrong (like missing data, wrong input, or network failure). 
+ If you don’t handle these errors, your whole program can stop suddenly. 
+
+Error Handling helps you: 
+
+Find problems in your code safely. 
+
+Continue running the program even after an error. 
+
+ 
+
+🧱 Syntax: try...catch...finally 
+
+try { 
+  // code that might cause an error 
+} catch (error) { 
+  // code that runs if an error happens 
+} finally { 
+  // code that always runs (optional) 
+} 
+ 
+
+ 
+
+🔹 try block 
+
+You put the code that might throw an error here. 
+
+If everything is fine → catch is skipped. 
+
+🔹 catch block 
+
+Runs only if an error happens inside try. 
+
+It gives you access to the error object (usually named error or err). 
+
+🔹 finally block 
+
+Runs no matter what happens (error or not). 
+
+Used for cleanup (like closing files, stopping timers, etc.) 
+
+ 
+
+🧠 Example 1: Basic try...catch 
+
+try { 
+  let num = 10; 
+  console.log(num.toUpperCase()); // ❌ Error: toUpperCase not valid for number 
+} catch (error) { 
+  console.log("Something went wrong!"); 
+  console.log(error.message); // shows what went wrong 
+} 
+ 
+console.log("Program continues..."); 
+ 
+
+Output: 
+
+Something went wrong! 
+num.toUpperCase is not a function 
+Program continues... 
+ 
+
+✅ Program doesn’t stop — it handles the error smoothly. 
+
+ 
+
+🧠 Example 2: try...catch...finally 
+
+try { 
+  console.log("Start"); 
+  let result = 10 / 0; 
+  console.log(result); 
+} catch (error) { 
+  console.log("Error happened:", error); 
+} finally { 
+  console.log("This always runs"); 
+} 
+ 
+
+Output: 
+
+Start 
+Infinity 
+This always runs 
+ 
+
+Even if no error happens, finally runs. 
+
+ 
+
+💣 The throw Statement 
+
+Sometimes you want to create your own errors manually. 
+
+Syntax: 
+
+throw "Something went wrong!"; 
+ 
+
+Or you can throw an Error object (recommended): 
+
+throw new Error("Invalid input!"); 
+ 
+
+ 
+
+🧠 Example 3: Using throw 
+
+function divide(a, b) { 
+  if (b === 0) { 
+    throw new Error("Cannot divide by zero!"); 
+  } 
+  return a / b; 
+} 
+ 
+try { 
+  console.log(divide(10, 0)); // ❌ Error 
+} catch (error) { 
+  console.log("Error:", error.message); 
+} 
+ 
+
+Output: 
+
+Error: Cannot divide by zero! 
+
+ 
+
+Finally example: 
+
+Suppose we start a timer, do some risky operation, and always want to stop the timer no matter what happens. 
+
+let timer = setInterval(() => { 
+  console.log("Timer running..."); 
+}, 1000); 
+ 
+try { 
+  console.log("Starting risky operation..."); 
+  // Simulate an error 
+  let result = 10 / 0; // This won’t throw an error in JS, let's throw manually 
+  if (!result) throw new Error("Something went wrong!"); 
+} catch (error) { 
+  console.log("Error caught:", error.message); 
+} finally { 
+  clearInterval(timer);  // ✅ Cleanup: stop the timer 
+  console.log("Timer stopped in finally block"); 
+} 
+ 
+
+Output: 
+
+Starting risky operation... 
+Error caught: Something went wrong! 
+Timer stopped in finally block 
+
+ 
+Here: 
+
+The try block does risky work. 
+
+The catch block handles the error. 
+
+The finally block always stops the timer, even if an error occurs. 
+
+If not finally lock is given 
+
+ 
+
+Keyword 
+
+Purpose 
+
+try 
+
+Runs code that might cause an error 
+
+catch 
+
+Handles the error if it happens 
+
+finally 
+
+Runs always (cleanup tasks) 
+
+throw 
+
+Manually creates (throws) an error 
+
+ 
+
+ 

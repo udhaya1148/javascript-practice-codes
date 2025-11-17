@@ -1,0 +1,371 @@
+JavaScript – Functions 
+
+What are Functions? 
+
+A function is a block of code designed to perform a specific task. 
+You can define it once and use (call) it multiple times — this helps avoid repeating code. 
+
+Functions are fundamental building blocks in all programming. 
+
+Functions enable better code organization, modularity, and efficiency. 
+
+Functions are reusable block of code designed to perform a particular task. 
+
+Functions execute when they are "called" or "invoked". 
+
+Why Functions? 
+
+With functions you can reuse code 
+
+You can write code that can be used many times. 
+
+You can use the same code with different arguments, to produce different results. 
+
+Function Invocation () 
+
+The code inside the function will execute when "something" invokes (calls) the function: 
+
+When it is invoked (called) from JavaScript code 
+
+When an event occurs (a user clicks a button) 
+
+Automatically (self invoked) 
+
+The () operator invokes (calls) the function: 
+
+ 
+
+Example: 
+
+function sum(a,b){ 
+
+  return a+b 
+
+} 
+
+console.log(sum(3,2)) 
+
+console.log(sum(4,3))  // here same function but passed different arguments to get different results 
+
+Output: 
+
+5 
+7   // same function give different output 
+
+ 
+
+Alternate method for store function call in variable also: 
+
+function sum(a,b){ 
+
+  return a+b 
+
+} 
+
+let total=sum(4,3) 
+
+console.log(total) 
+
+ 
+
+Output: 
+
+7 
+
+ 
+
+1️⃣ Function Declaration 
+
+ 
+
+A function declaration is a way to define a function with a name, using the function keyword. 
+
+ 
+
+Syntax: 
+
+function functionName(parameters) { 
+  // code 
+} 
+
+ 
+
+ 
+
+Example: 
+
+function greet() {   // ✅ Function declaration, name = greet 
+
+  console.log("Hello!"); 
+
+} 
+
+  
+
+greet(); // ✅ Output: Hello! 
+
+ 
+
+Function Declaration: 
+
+Starts with the function keyword. 
+
+Function name is mandatory. 
+
+Has a name (like greet). 
+
+Can take parameters (inputs). 
+
+Must be called to run. 
+
+Hoisted → You can call it before the definition: 
+
+Example for function declaration hoisted: 
+
+sayHi(); // ✅ Works 
+
+  
+
+function sayHi() { 
+
+  console.log("Hi!"); 
+
+} 
+
+ 
+
+Function Declaration is Hoisted 
+
+sayHello(); // ✅ Works even before definition 
+
+function sayHello() { 
+
+  console.log("Hello!"); 
+
+} 
+
+Memory Creation Phase (Hoisting) 
+
+When JavaScript first reads your code, it does two things in the memory creation phase: 
+
+It scans for function declarations and variable declarations. 
+
+It creates them in memory before executing any code. 
+
+Example: 
+
+function sayHello() {      // Hoisted to the top 
+
+  console.log("Hello!"); 
+
+} 
+
+sayHello();                // Now can be called safely 
+
+ 
+
+ 
+
+2️⃣ Function Expression 
+
+You can also store a function inside a variable. 
+
+Example:  
+
+const greet = function() { 
+
+  console.log("Hello from expression!"); 
+
+}; 
+
+greet(); // Output: Hello from expression! 
+
+Function expression:  
+
+Function doesn’t have a name (anonymous function). 
+
+Function is assigned to a variable. 
+
+Useful when passing functions as values (e.g., callbacks). 
+
+Not hoisted — you cannot call it before the definition. 
+
+Function Expression is not Hoisted: 
+
+sayHello(); // ❌ Error 
+
+const sayHello = function() { 
+
+  console.log("Hello!"); 
+
+}; 
+
+Memory Creation Phase (Hoisting) 
+
+When JS first reads the code, it creates memory for variables and functions, but there’s a difference: 
+
+const and let variables are hoisted but not initialized. 
+
+They enter the Temporal Dead Zone (TDZ). 
+
+They cannot be accessed until the line where they are declared. 
+
+Function expression assigned to sayHello is not hoisted like a function declaration. 
+
+Example: 
+
+sayHello(); // ❌ Error: Cannot access 'sayHello' before initialization 
+
+const sayHello = function() { 
+
+  console.log("Hello!"); 
+
+}; 
+
+Js Change internally like this: 
+
+const sayHello; // declared, but undefined yet 
+
+sayHello(); // ❌ Cannot call undefined 
+
+sayHello = function() { ... } 
+
+ 
+
+3️⃣ Arrow Functions 
+
+ 
+
+A shorter way to write functions introduced in ES6. 
+
+Example: 
+
+const greet = () => { 
+  console.log("Hello from arrow function!"); 
+}; 
+ 
+greet(); // Output: Hello from arrow function! 
+
+ 
+
+Write this in oneline also: 
+
+const greet = () => console.log("Hi!"); 
+
+Greet() 
+
+ 
+
+With parameters: 
+
+const greetUser = (name) => console.log("Hi " + name); 
+greetUser("Udhay"); // Output: Hi Udhay 
+
+ 
+
+If  have one parameter,  can skip the parentheses: 
+
+const greetUser = name => console.log("Hi " + name); 
+
+ 
+
+Features of Arrow function: 
+
+Shorter syntax. 
+
+Does not have its own this. 
+
+Not hoisted. 
+
+Great for short, simple functions. 
+
+In arrow function not use this keyword with in object if used it show undefined:  
+example: 
+
+let person={ 
+
+  name:'ram', 
+
+  age:23, 
+
+  
+
+  greet:()=> console.log('Hi',this.name) 
+
+} 
+
+person.greet() 
+
+ 
+
+Output: 
+
+Hi undefined 
+
+In Arrow function only get out side function this value  
+
+Example: 
+
+let person = { 
+
+  name: 'ram', 
+
+  age: 23, 
+
+  msg() { 
+
+    (() => console.log('Hi', this.name))(); // define and call immediately 
+
+  } 
+
+}; 
+
+person.msg(); 
+
+ 
+
+4️⃣ Return Statement 
+
+Used to send a value back from the function. 
+
+Example:  
+
+function add(a, b) { 
+
+  return a + b; 
+
+} 
+
+let result = add(2, 3); 
+
+console.log(result); // 5 
+
+Notes: 
+
+return immediately exits the function. 
+
+If no return, function returns undefined. 
+
+ 
+
+5️⃣  Default Parameters (ES6) 
+
+Provide a default value if argument not passed. 
+
+function greet(name = "Guest") { 
+  console.log("Hello, " + name); 
+} 
+ 
+greet(); // Hello, Guest 
+greet("Udhay"); // Hello, Udhay 
+ 
+
+📝 Notes: 
+
+Avoids undefined errors. 
+
+Works with both normal and arrow functions. 
+
+ 
+
+ 

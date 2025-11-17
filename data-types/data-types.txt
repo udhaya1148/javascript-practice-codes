@@ -1,0 +1,141 @@
+Java script Data Types 
+
+JavaScript has two main categories: 
+
+Primitive types (single values)---> string, number, boolen, null, undefined, symbol 
+
+Primitive types like String, Number, Boolean are immutable — any operation creates a new value. 
+
+Reference types (objects, arrays, etc.) 
+
+Reference types are mutable data types 
+
+ 
+
+1. String 
+
+Textual data, enclosed in quotes (' ' or " " or `). 
+
+Example: 
+
+let name = "kumar"; 
+let greeting = 'Hello!'; 
+let template = `Hi ${name}!`; 
+ 
+
+It  can store letters, words, sentences. 
+
+ 
+
+2. Number 
+
+All numbers (integers or decimals) are number type. 
+
+JavaScript does not have separate integer or float types. 
+
+let age = 25; 
+let price = 19.99; 
+ 
+
+ 
+
+3. Boolean 
+
+Logical true/false value. 
+
+Often used in conditions. 
+
+let isLoggedIn = true; 
+let hasAccess = false; 
+ 
+
+ 
+
+4. Null 
+
+Represents intentional absence of value. 
+
+Type of null is a special primitive. 
+
+let data = null; 
+console.log(data); // null 
+ 
+
+ 
+
+5. Undefined 
+
+Default value of a variable that has not been assigned. 
+
+let value; 
+console.log(value); // undefined 
+ 
+
+Difference with null: 
+
+undefined → variable exists but has no value yet 
+
+null → variable is empty on purpose 
+
+ 
+
+6. Symbol 
+
+Unique identifier, rarely used but useful for keys in objects. 
+
+let id = Symbol('id'); 
+let id2 = Symbol('id'); 
+console.log(id === id2); // false, always unique 
+ 
+
+ 
+
+7. BigInt 
+
+Used for very large integers beyond the safe limit of Number (2^53-1). 
+
+let big = 1234567890123456789012345678901234567890n; 
+ 
+
+Notice the n at the end. 
+
+ 
+
+ Reference Types 
+
+These are objects and arrays. They store multiple values or complex data. 
+
+ 
+
+8. Object 
+
+Collection of key-value pairs. 
+
+Keys are strings or symbols, values can be any type. 
+
+let person = { 
+  name: "kumar", 
+  age: 25, 
+  isAdmin: true 
+}; 
+ 
+
+Access with person.name or person["age"]. 
+
+ 
+
+9. Array 
+
+Ordered list of values (can mix types, but usually same type). 
+
+Special type of object. 
+
+let numbers = [1, 2, 3, 4]; 
+let mixed = [1, "hello", true, null]; 
+ 
+
+Access with index: numbers[0] → 1 
+
+Arrays are 0-indexed. 
+
+ 

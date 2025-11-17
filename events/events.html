@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <!----Inline event handler-->
+    <h1
+      onmouseover="this.innerHTML = 'Ooops!'"
+      onmouseout="this.innerHTML = 'Click on this text!'"
+    >
+      Click on this text!
+    </h1>
+
+    <button id="btn">Click Me</button>
+
+    <script>
+      //event listener
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+        alert("Button clicked!");
+      });
+
+      btn.addEventListener("mouseover", () => {
+        btn.style.backgroundColor = "yellow";
+      });
+
+      btn.addEventListener("mouseout", () => {
+        btn.style.backgroundColor = "green";
+      });
+    </script>
+  </body>
+</html>

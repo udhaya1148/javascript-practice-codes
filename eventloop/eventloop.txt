@@ -1,0 +1,192 @@
+Event Loop 
+
+Call stack 
+
+Web APIs 
+
+Callback queue & microtasks 
+
+1. JavaScript is Single-Threaded 
+
+That means: 
+
+JS can do only one thing at a time (it has only one “call stack”). 
+
+It doesn’t run multiple lines of code simultaneously. 
+
+But it can handle async tasks (like setTimeout, fetch) using the Event Loop mechanism. 
+
+ 
+
+ 
+
+2. Call Stack (Execution Stack) 
+
+Think of the Call Stack as a stack of plates 🍽️ 
+ Whenever you call a function → it goes on top of the stack. 
+ When the function finishes → it is popped out. 
+
+Example: 
+
+function greet() { 
+  console.log("Hello"); 
+} 
+ 
+function start() { 
+  greet(); 
+  console.log("Start done"); 
+} 
+ 
+start(); 
+ 
+
+Step-by-step: 
+
+start() pushed into stack 
+
+Inside start(), greet() is called → pushed on top 
+
+console.log("Hello") runs → popped 
+
+greet() finishes → popped 
+
+console.log("Start done") runs 
+
+start() finishes → popped 
+
+✅ Stack is empty again. 
+
+ 
+
+3. Web APIs 
+
+The browser gives JS some “extra powers” through Web APIs. 
+ These are not part of JS itself, but the environment (browser or Node.js) provides them. 
+
+Examples of Web APIs: 
+
+setTimeout() 
+
+fetch() 
+
+DOM events (click, input) 
+
+XMLHttpRequest, localStorage, etc. 
+
+They help JS do things asynchronously (in the background). 
+
+Example: 
+
+console.log("Start"); 
+ 
+setTimeout(() => { 
+  console.log("Timeout done"); 
+}, 2000); 
+ 
+console.log("End"); 
+ 
+
+How it works: 
+
+console.log("Start") → printed 
+
+setTimeout → sent to Web API (timer starts in background) 
+
+console.log("End") → printed 
+
+After 2 seconds, Web API sends callback → to Callback Queue 
+
+When Call Stack is empty → Event Loop pushes the callback to the stack 
+
+"Timeout done" → printed 
+
+✅ Output: 
+
+Start 
+End 
+Timeout done 
+
+ 
+
+Web api 
+
+ 
+
+ 
+
+ 
+
+ 
+
+4. Event Loop 
+
+The Event Loop constantly checks: 
+
+“Is the Call Stack empty? If yes, is there anything in the Callback Queue to run?” 
+
+It’s like a traffic controller 🚦 
+ → When JS finishes current tasks (stack empty), 
+ → It takes the next waiting callback (like from setTimeout) 
+ → And pushes it into the call stack. 
+
+5️⃣ Callback Queue (Macro Tasks) 
+
+This is where normal async callbacks go: 
+
+setTimeout 
+
+setInterval 
+
+setImmediate (Node.js) 
+
+These are called Macro Tasks. 
+
+ 
+
+⚡ 6️⃣ Microtask Queue 
+
+A separate, faster queue for: 
+
+Promises (.then, .catch, .finally) 
+
+Microtasks always run before the next macro task. 
+
+ 
+
+Component 
+
+Description 
+
+Examples 
+
+Call Stack 
+
+Executes functions line by line 
+
+function calls 
+
+Web APIs 
+
+Browser handles async tasks 
+
+setTimeout, fetch, DOM events 
+
+Callback Queue (Macro Task) 
+
+Stores async callbacks waiting to run 
+
+setTimeout, setInterval 
+
+Microtask Queue 
+
+Runs before next macro task 
+
+Promise.then, queueMicrotask 
+
+Event Loop 
+
+Moves tasks from queues → stack 
+
+Always running 
+
+ 

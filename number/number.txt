@@ -1,0 +1,131 @@
+Numbers 
+
+ 
+
+1️⃣ Number Types 
+
+JavaScript has two main number types: 
+
+Number → Normal numbers (integers and decimals) 
+
+BigInt → Very large integers beyond safe limit 
+
+// Normal numbers 
+let a = 10;       // integer 
+let b = 3.14;     // decimal 
+console.log(a, b); // 10 3.14 
+ 
+// BigInt (for huge numbers) 
+let big = 123456789012345678901234567890n; 
+console.log(big); 
+ 
+
+Tip: BigInt numbers end with n. 
+
+ 
+
+2️⃣ Special Number Values 
+
+Value 
+
+Description 
+
+Infinity 
+
+Positive infinity (e.g., 1/0) 
+
+-Infinity 
+
+Negative infinity (e.g., -1/0) 
+
+NaN 
+
+Not a Number (invalid math) 
+
+console.log(10 / 0);      // Infinity 
+console.log(-10 / 0);     // -Infinity 
+console.log("hello" * 2); // NaN 
+ 
+
+ 
+
+3️⃣ Arithmetic Operations 
+
+let x = 10; 
+let y = 3; 
+ 
+console.log(x + y); // Addition → 13 
+console.log(x - y); // Subtraction → 7 
+console.log(x * y); // Multiplication → 30 
+console.log(x / y); // Division → 3.3333 
+console.log(x % y); // Modulus (remainder) → 1 
+console.log(x ** y); // Exponent → 10^3 = 1000 
+ 
+
+ 
+
+4️⃣ Number Methods 
+
+Convert Number to String 
+
+let num = 123; 
+console.log(num.toString()); // "123" 
+ 
+
+Fixed Decimal Places 
+
+let price = 9.876; 
+console.log(price.toFixed(2)); // "9.88" → rounds to 2 decimal places 
+ 
+
+ 
+
+5️⃣ Parsing Strings to Numbers 
+
+let str1 = "123"; 
+let str2 = "12.34"; 
+ 
+console.log(Number(str1));      // 123 (Number) 
+console.log(parseInt(str2));    // 12 (integer only) 
+console.log(parseFloat(str2));  // 12.34 (decimal) 
+ 
+
+Tip: parseInt() ignores decimals; parseFloat() keeps them. 
+
+ 
+
+6️⃣ Checking Numbers 
+
+console.log(isNaN("hello"));       // true → not a number 
+console.log(isNaN(123));           // false → is a number 
+console.log(isFinite(10/2));       // true → finite number 
+console.log(Number.isInteger(10)); // true → integer 
+console.log(Number.isInteger(3.14)); // false 
+ 
+
+ 
+
+7️⃣ Math Object Methods 
+
+JavaScript has a Math object for advanced calculations: 
+
+let num1 = 5.7; 
+let num2 = 3; 
+ 
+console.log(Math.round(num1)); // 6 → round to nearest 
+console.log(Math.floor(num1)); // 5 → round down 
+console.log(Math.ceil(num1));  // 6 → round up 
+console.log(Math.abs(-10));    // 10 → absolute value 
+console.log(Math.max(1,5,3));  // 5 → largest 
+console.log(Math.min(1,5,3));  // 1 → smallest 
+console.log(Math.sqrt(16));    // 4 → square root 
+console.log(Math.pow(2,3));    // 8 → exponent 
+console.log(Math.random());     // random number 0 ≤ x < 1 
+ 
+
+Random number example between 1 and 10: 
+
+let randomNum = Math.floor(Math.random() * 10) + 1; 
+console.log(randomNum); 
+
+ 

@@ -1,0 +1,131 @@
+Type Conversion 
+
+1. What is Type Conversion? 
+
+Type conversion means changing a value from one type to another: 
+
+String → "hello", "123" 
+
+Number → 123, 4.5 
+
+Boolean → true, false 
+
+There are two types of conversion: explicit and implicit. 
+
+ 
+
+🔹 2. Explicit Conversion (Type Casting) 
+
+This is when you manually convert a value using functions like String(), Number(), or Boolean(). 
+
+Examples: 
+
+// Number → String 
+let num = 123; 
+let str = String(num); 
+console.log(str);        // "123" 
+console.log(typeof str); // "string" 
+ 
+// String → Number 
+let str2 = "456"; 
+let num2 = Number(str2); 
+console.log(num2);       // 456 
+console.log(typeof num2);// "number" 
+ 
+// Any value → Boolean 
+console.log(Boolean(0));     // false 
+console.log(Boolean(123));   // true 
+console.log(Boolean(""));    // false 
+console.log(Boolean("hello"));// true 
+ 
+
+✅ Explicit conversion is always intentional and clear. 
+
+ 
+
+🔹 3. Implicit Conversion (Type Coercion) 
+
+Rules: 
+
++ operator → if any operand is string → converts the other to string. Because string have 2 purpose (addition and concatenation . So java script decide based on operator 
+
+-, *, /, % → converts operands to numbers. It convert forcely string to number because these operators only for arithmetic operations.Arithmetic operation only done between numbers.so javascript convert string to number 
+
+Boolean context (if, while) → converts value to true/false. 
+
+== comparison → converts types to match before comparison. 
+
+ 
+
+This happens automatically when JavaScript mixes different types. 
+
+Examples: 
+
+// Number + String → String 
+console.log(5 + "5"); // "55" (number converted to string) 
+ 
+// Boolean → Number in arithmetic 
+console.log(true + 1);  // 2 (true → 1) 
+console.log(false + 1); // 1 (false → 0) 
+ 
+// String → Number in arithmetic 
+console.log("10" - 5); // 5 ("10" converted to number) 
+console.log("10" * 2); // 20 
+
+1. String Coercion 
+
+When JS expects a string (like + with a string), it converts other types to strings. 
+
+console.log("5" + 2);      // "52" → number 2 becomes string 
+console.log(true + " test");// "true test" → boolean becomes string 
+console.log(null + " ok");  // "null ok" → null becomes string 
+console.log(undefined + " hi"); // "undefined hi" 
+ 
+
+Rule: + with any string → converts other operand to string. 
+
+ 
+
+🔹 2. Number Coercion 
+
+When JS expects a number (like -, *, /, %), it converts values to numbers. 
+
+console.log("10" - 5);   // 5 → string "10" becomes number 
+console.log("10" * 2);   // 20 
+console.log("10" / "2"); // 5 
+console.log(true + 1);   // 2 → true = 1 
+console.log(false + 5);  // 5 → false = 0 
+console.log(null + 5);   // 5 → null = 0 
+console.log(undefined + 5); // NaN → undefined cannot convert to number 
+ 
+
+Rule: -, *, /, % → JS converts operands to numbers. 
+
+ 
+
+🔹 3. Boolean Coercion 
+
+When JS expects a boolean (in if, while, ? :), it converts value to true or false. 
+
+if ("hello") console.log("true"); // prints "true" → non-empty string = true 
+if ("") console.log("false");     // doesn't print → empty string = false 
+if (0) console.log("false");      // doesn't print → 0 = false 
+if (123) console.log("true");     // prints "true" → non-zero number = true 
+if (null) console.log("false");   // doesn't print → null = false 
+if (undefined) console.log("false"); // doesn't print → undefined = false 
+ 
+
+ 
+
+🔹 4. Comparison Coercion 
+
+console.log("5" == 5);      // true → string "5" converted to number 
+console.log("0" == false);  // true → string "0" → number 0 → equals false 
+console.log(1 == true);     // true → true = 1 
+console.log(0 == false);    // true 
+console.log(null == undefined); // true → special case 
+ 
+
+Note: Always use === (strict equality) to avoid implicit coercion issues. 
+
+ 

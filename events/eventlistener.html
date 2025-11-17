@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <input id="name" placeholder="Type something"> 
+ 
+<script> 
+  document.getElementById("name").addEventListener("input", (e) => { 
+    console.log("Current value:", e.target.value);  //e.target.value gives you what the user typed or selected
+  }); 
+</script>
+
+</body>
+</html>

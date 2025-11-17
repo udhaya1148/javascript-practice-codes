@@ -1,0 +1,160 @@
+1) How do you create an object with keys name as "kumar" and age as 25?
+let person ={
+    name:'kumar',
+    age:25
+}
+console.log(person)
+
+output:
+{ name: 'kumar', age: 25 }
+
+2) How do you access the value of name using dot notation and bracket notation?
+let person ={
+    name:'kumar',
+    age:25
+}
+console.log(person.name) // dot notation
+console.log(person['name'])// square bracket notation
+
+output:
+kumar
+kumar
+
+3) How do you add a new property city with value "Chennai" to this object?
+let person ={
+    name:'kumar',
+    age:25,
+}
+person.city='Chennai';
+console.log(person)
+
+output:
+{ name: 'kumar', age: 25, city: 'Chennai' }
+
+4) How do you delete the age property from the object person?
+let person ={
+    name:'kumar',
+    age:25,
+}
+delete person.age
+console.log(person)
+
+output:
+{ name: 'kumar' }
+
+5) How do you loop over all keys of the object person using for...in?
+
+let person = {
+    name:'kumar',
+    age:23,
+    city:'cbe',
+    gender:'male'
+}
+for(key in person){
+    console.log(key)
+}
+
+output:
+name
+age
+city
+gender
+
+6) How do you loop over all values of the object person using for...in?
+let person = {
+    name:'kumar',
+    age:23,
+    city:'cbe',
+    gender:'male'
+}
+for(value in person){
+    console.log(person[value]);
+}
+
+output:
+kumar
+23
+cbe
+male
+
+7) //How do you check if a property age exists in the object person?
+let person = {
+    name:'kumar',
+    age:23,
+    city:'cbe',
+    gender:'male'
+}
+//console.log('age' in person)
+if('age' in person){
+    console.log('age property exists');
+}
+else{
+    console.log('age property not exists');
+}
+
+output:
+age property exists
+
+8) //How do you merge two objects:
+
+let obj1 = { a: 1, b: 2 };
+let obj2 = { c: 3, d: 4 };
+
+console.log({...obj1, ...obj2}) // it cannot change any existing object
+console.log(Object.assign(obj1,obj2)) //assign changed existing first object
+console.log(obj1)
+console.log(obj2)
+output:
+{ a: 1, b: 2, c: 3, d: 4 }
+{ a: 1, b: 2, c: 3, d: 4 }
+{ a: 1, b: 2, c: 3, d: 4 }
+{ c: 3, d: 4 }
+
+9) What’s the difference between dot notation and bracket notation when accessing object properties?
+dot notation and bracket notation both are used to get the specific key. difference between these two is dot notation does not support space and special characters and
+[] notation support space and special character and used in dynamic key values
+
+10) What will this output?
+let person = { name: "Alex", age: 25 };
+for (let key in person) {
+  console.log(key + ": " + person[key]);
+}
+
+output:
+name : Alex
+age : 25
+
+11) What will this output?
+
+let person = { name: "Alex", age: 25 };
+person["full name"] = "Alex Kumar";
+console.log(person);
+
+output:
+{ name: 'Alex', age: 25, 'full name': 'Alex Kumar' }
+
+12) How do you freeze an object so that no properties can be added, deleted, or changed?
+let person = { name: "Alex", age: 25 };
+person["full name"] = "Alex Kumar";
+
+Object.freeze(person)
+person.city='cbe' //unable to update,add,delete key and value in freezed property
+console.log(person);
+output:
+unable to update key and value in freezed property
+
+13) How do you get all keys and all values of an object using built-in methods?
+let person ={
+    name:'kumar',
+    age:25
+}
+console.log(Object.keys(person)) // print only keys as array
+console.log(Object.values(person)) //print only values as array
+console.log(Object.entries(person)) //print key and value as array
+
+output:
+[ 'name', 'age' ]
+[ 'kumar', 25 ]
+[ [ 'name', 'kumar' ], [ 'age', 25 ] ]
+
+
